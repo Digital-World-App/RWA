@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AdminMaterial2ProConfig(AppConfig):
+class DashboardConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'admin_material2_pro'
+    name = 'dashboard'

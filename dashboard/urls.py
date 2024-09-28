@@ -1,5 +1,5 @@
 from django.urls import path
-from admin_material2_pro import views
+from dashboard import views
 from django.contrib.auth import views as auth_views
 
 
