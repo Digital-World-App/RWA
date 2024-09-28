@@ -232,42 +232,14 @@
     </a>
     <div class="collapse {% if 'applications' in parent %}show{% endif %}" id="applicationsExamples">
       <ul class="nav ">
-        <li class="nav-item {% if 'crm' in segment %}active{% endif %} ">
-          <a class="nav-link text-white {% if 'crm' in segment %}active{% endif %}" href="{% url 'crm' %}">
+        <li class="nav-item {% if 'test' in segment %}active{% endif %} ">
+          <a class="nav-link text-white {% if 'test' in segment %}active{% endif %}" href="{% url 'test' %}">
             <span class="sidenav-mini-icon"> C </span>
-            <span class="sidenav-normal  ms-2  ps-1"> CRM </span>
+            <span class="sidenav-normal  ms-2  ps-1"> test </span>
           </a>
-        </li>
-        <li class="nav-item {% if 'kanban' in segment %}active{% endif %}">
-          <a class="nav-link text-white {% if 'kanban' in segment %}active{% endif %}" href="{% url 'kanban' %}">
-            <span class="sidenav-mini-icon"> K </span>
-            <span class="sidenav-normal  ms-2  ps-1"> Kanban </span>
-          </a>
-        </li>
-        <li class="nav-item {% if 'wizard' in segment %}active{% endif %}">
-          <a class="nav-link text-white {% if 'wizard' in segment %}active{% endif %}" href="{% url 'wizard' %}">
-            <span class="sidenav-mini-icon"> W </span>
-            <span class="sidenav-normal  ms-2  ps-1"> Wizard </span>
-          </a>
-        </li>
-        <li class="nav-item {% if 'datatables' in segment %}active{% endif %}">
-          <a class="nav-link text-white {% if 'datatables' in segment %}active{% endif %}" href="{% url 'datatables' %}">
-            <span class="sidenav-mini-icon"> D </span>
-            <span class="sidenav-normal  ms-2  ps-1"> DataTables </span>
-          </a>
-        </li>
-        <li class="nav-item {% if 'calendar' in segment %}active{% endif %}">
-          <a class="nav-link text-white {% if 'calendar' in segment %}active{% endif %}" href="{% url 'calendar' %}">
-            <span class="sidenav-mini-icon"> C </span>
-            <span class="sidenav-normal  ms-2  ps-1"> Calendar </span>
-          </a>
-        </li>
-        <li class="nav-item {% if 'stats' in segment %}active{% endif %}">
-          <a class="nav-link text-white {% if 'stats' in segment %}active{% endif %}" href="{% url 'stats' %}">
-            <span class="sidenav-mini-icon"> S </span>
-            <span class="sidenav-normal  ms-2  ps-1"> Stats </span>
-          </a>
-        </li>
+        </li>       
+        
+        
       </ul>
     </div>
   </li>

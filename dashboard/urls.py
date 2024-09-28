@@ -11,12 +11,8 @@ urlpatterns = [
 
     
     # Applications
-    path('applications/crm/', views.crm, name="crm"),   
-    path('applications/kanban/', views.kanban, name="kanban"),   
-    path('applications/wizard/', views.wizard, name="wizard"),   
-    path('applications/datatables/', views.datatables, name="datatables"),   
-    path('applications/calendar/', views.calendar, name="calendar"),   
-    path('applications/stats/', views.stats, name="stats"), 
+    path('applications/test/', views.test, name="test"),   
+     
 
     
     # Authentication -> Login

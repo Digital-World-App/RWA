@@ -31,47 +31,13 @@ def smart_home(request):
 
 
 # Applications
-def crm(request):
+def test(request):
   context = {
     'parent': 'applications',
-    'segment': 'crm'
+    'segment': 'test'
   }
-  return render(request, 'pages/applications/crm.html', context)
+  return render(request, 'pages/applications/test.html', context)
   
-def kanban(request):
-  context = {
-    'parent': 'applications',
-    'segment': 'kanban'
-  }
-  return render(request, 'pages/applications/kanban.html', context)
-
-def wizard(request):
-  context = {
-    'parent': 'applications',
-    'segment': 'wizard'
-  }
-  return render(request, 'pages/applications/wizard.html', context)
-
-def datatables(request):
-  context = {
-    'parent': 'applications',
-    'segment': 'datatables'
-  }
-  return render(request, 'pages/applications/datatables.html', context)
-
-def calendar(request):
-  context = {
-    'parent': 'applications',
-    'segment': 'calendar'
-  }
-  return render(request, 'pages/applications/calendar.html', context)
-
-def stats(request):
-  context = {
-    'parent': 'applications',
-    'segment': 'stats'
-  }
-  return render(request, 'pages/applications/stats.html', context)
 
 
 # Authentication -> Login
