@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
   <div class="container">
     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{% url 'index' %}">
-      #
+      D-World
     </a>
     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon mt-2">
@@ -90,13 +90,7 @@
                     <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownSignIn">
                       <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'basic_login' %}">
                         <span>Basic</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'cover_login' %}">
-                        <span>Cover</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md" href="{% url 'illustration_login' %}">
-                        <span>Illustration</span>
-                      </a>
+                      </a>                      
                     </div>
                   </li>
                   <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
@@ -108,13 +102,7 @@
                     <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownSignUp">
                       <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'basic_register' %}">
                         <span>Basic</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'cover_register' %}">
-                        <span>Cover</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md" href="{% url 'illustration_register' %}">
-                        <span>Illustration</span>
-                      </a>
+                      </a>                      
                     </div>
                   </li>
                   <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
@@ -126,13 +114,7 @@
                     <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownPasswordReset">
                       <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'basic_reset' %}">
                         <span>Basic</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'cover_reset' %}">
-                        <span>Cover</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md" href="{% url 'illustration_reset' %}">
-                        <span>Illustration</span>
-                      </a>
+                      </a>                      
                     </div>
                   </li>
                   <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
@@ -144,13 +126,7 @@
                     <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdownLock">
                       <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'basic_lock' %}">
                         <span>Basic</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'cover_lock' %}">
-                        <span>Cover</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md" href="{% url 'illustration_lock' %}">
-                        <span>Illustration</span>
-                      </a>
+                      </a>                      
                     </div>
                   </li>
                   <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
@@ -162,13 +138,7 @@
                     <div class="dropdown-menu mt-0 py-3 px-2" aria-labelledby="dropdown2fa">
                       <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'basic_verification' %}">
                         <span>Basic</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md mb-1" href="{% url 'cover_verification' %}">
-                        <span>Cover</span>
-                      </a>
-                      <a class="dropdown-item ps-3 border-radius-md" href="{% url 'illustration_verification' %}">
-                        <span>Illustration</span>
-                      </a>
+                      </a>                      
                     </div>
                   </li>
                   <li class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0">
@@ -198,12 +168,7 @@
                 <a href="{% url 'basic_login' %}" class="dropdown-item border-radius-md ps-4">
                   Basic
                 </a>
-                <a href="{% url 'cover_login' %}" class="dropdown-item border-radius-md ps-4">
-                  Cover
-                </a>
-                <a href="{% url 'illustration_login' %}" class="dropdown-item border-radius-md ps-4">
-                  Illustration
-                </a>
+                
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                   <i class="material-icons opacity-6 me-2 text-md">assignment</i>
                   Sign Up
@@ -211,12 +176,7 @@
                 <a href="{% url 'basic_register' %}" class="dropdown-item border-radius-md ps-4">
                   Basic
                 </a>
-                <a href="{% url 'cover_register' %}" class="dropdown-item border-radius-md ps-4">
-                  Cover
-                </a>
-                <a href="{% url 'illustration_register' %}" class="dropdown-item border-radius-md ps-4">
-                  Illustration
-                </a>
+                
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                   <i class="material-icons opacity-6 me-2 text-md">restart_alt</i>
                   Reset Password
@@ -224,25 +184,14 @@
                 <a href="{% url 'basic_reset' %}" class="dropdown-item border-radius-md ps-4">
                   Basic
                 </a>
-                <a href="{% url 'cover_reset' %}" class="dropdown-item border-radius-md ps-4">
-                  Cover
-                </a>
-                <a href="{% url 'illustration_reset' %}" class="dropdown-item border-radius-md ps-4">
-                  Illustation
-                </a>
+                
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                   <i class="material-icons opacity-6 me-2 text-md">lock</i>
                   Lock
                 </h6>
                 <a href="{% url 'basic_lock' %}" class="dropdown-item border-radius-md ps-4">
                   Basic
-                </a>
-                <a href="{% url 'cover_lock' %}" class="dropdown-item border-radius-md ps-4">
-                  Cover
-                </a>
-                <a href="{% url 'illustration_lock' %}" class="dropdown-item border-radius-md ps-4">
-                  Illustration
-                </a>
+                </a>                
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                   <i class="material-icons opacity-6 me-2 text-md">admin_panel_settings</i>
                   2-Step Verification
@@ -250,12 +199,7 @@
                 <a href="{% url 'basic_verification' %}" class="dropdown-item border-radius-md ps-4">
                   Basic
                 </a>
-                <a href="{% url 'cover_verification' %}" class="dropdown-item border-radius-md ps-4">
-                  Cover
-                </a>
-                <a href="{% url 'illustration_verification' %}" class="dropdown-item border-radius-md ps-4">
-                  Illustration
-                </a>
+               
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
                   <i class="material-icons opacity-6 me-2 text-md">warning</i>
                   Error

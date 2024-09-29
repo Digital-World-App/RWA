@@ -27,9 +27,6 @@ def smart_home(request):
   }
   return render(request, 'pages/dashboards/smart-home.html', context)
 
-
-
-
 # Applications
 def test(request):
   context = {
@@ -38,19 +35,9 @@ def test(request):
   }
   return render(request, 'pages/applications/test.html', context)
   
-
-
 # Authentication -> Login
 class BasicLoginView(LoginView):
   template_name = 'accounts/signin/basic.html'
-  form_class = LoginForm
-
-class CoverLoginView(LoginView):
-  template_name = 'accounts/signin/cover.html'
-  form_class = LoginForm
-
-class IllustrationLoginView(LoginView):
-  template_name = 'accounts/signin/illustration.html'
   form_class = LoginForm
 
 # Authentication -> Register
@@ -69,57 +56,13 @@ def basic_register(request):
   context = { 'form': form }
   return render(request, 'accounts/signup/basic.html', context)
 
-def cover_register(request):
-  if request.method == 'POST':
-    form = RegistrationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      print('Account created successfully!')
-      return redirect('/accounts/cover-login/')
-    else:
-      print("Register failed!")
-  else:
-    form = RegistrationForm()
-
-  context = { 'form': form }
-  return render(request, 'accounts/signup/cover.html', context)
-
-def illustration_register(request):
-  if request.method == 'POST':
-    form = RegistrationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      print('Account created successfully!')
-      return redirect('/accounts/illustration-login/')
-    else:
-      print("Register failed!")
-  else:
-    form = RegistrationForm()
-
-  context = { 'form': form }
-  return render(request, 'accounts/signup/illustration.html', context)
-
 # Authentication -> Lock
 def basic_lock(request):
   return render(request, 'accounts/lock/basic.html')
 
-def cover_lock(request):
-  return render(request, 'accounts/lock/cover.html')
-
-def illustration_lock(request):
-  return render(request, 'accounts/lock/illustration.html')
-
 # Authentication -> Reset
 class BasicPasswordResetView(PasswordResetView):
   template_name = 'accounts/reset/basic.html'
-  form_class = UserPasswordResetForm
-
-class CoverPasswordResetView(PasswordResetView):
-  template_name = 'accounts/reset/cover.html'
-  form_class = UserPasswordResetForm
-
-class IllustrationPasswordResetView(PasswordResetView):
-  template_name = 'accounts/reset/illustration.html'
   form_class = UserPasswordResetForm
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
@@ -130,15 +73,10 @@ class UserPasswordChangeView(PasswordChangeView):
   template_name = 'accounts/change/basic.html'
   form_class = UserPasswordChangeForm
 
-# Authentication -> Verification
+# Authentication 2FA -> Verification
 def basic_verification(request):
   return render(request, 'accounts/verification/basic.html')
 
-def cover_verification(request):
-  return render(request, 'accounts/verification/cover.html')
-
-def illustration_verification(request):
-  return render(request, 'accounts/verification/illustration.html')
 
 # Error
 def error_404(request):
