@@ -1,0 +1,59 @@
+{% extends 'layouts/base-fullscreen.html' %}
+{% load static %}
+
+{% block content %}
+  
+  <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-12 position-relative z-index-2">
+
+                <!-- Cryptocurrency Table -->
+                {% include 'pages/dashboards/includes/graphic_header.html' %}
+
+                <!-- Cryptocurrency Table -->
+                {% include 'pages/dashboards/includes/card_graphics.html' %}
+
+                <!-- Cryptocurrency Table -->
+                {% include 'pages/dashboards/includes/crypto_table.html' %}
+                
+                
+            </div>
+        </div>
+        <div class="row">
+            {% include 'partials/_pagination.html' %}
+        </div>
+  </div>
+
+{% endblock content %}
+
+{% block footer %}
+
+  {% include 'includes/footer-fullscreen.html' %}
+
+{% endblock footer %}
+
+
+{% block extra_js %}
+
+  <script src="{% static 'assets/js/plugins/parallax.min.js' %}"></script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.onscroll = debounce(function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var oVal = (window.scrollY / 3);
+        bgParallax.style.transform = 'translate3d(0,' + oVal + 'px,0)';
+      }, 6);
+    }
+  </script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+{% endblock extra_js %}

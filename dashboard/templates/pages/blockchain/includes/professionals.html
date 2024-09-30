@@ -1,0 +1,235 @@
+<div class="container-fluid py-4">
+      <div class="row">
+         <!-- Topógrafo -->
+         <div class="col-sm-4 mb-5 mb-sm-0 ">
+            <form method="post" id="topografo" data-form-url="{% url 'topografo_form' %}">
+               {% csrf_token %}
+               <article class="card h-100">
+                  <header class="card-header pb-0 p-3">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h6 class="mb-0">Topógrafo(a)</h6>
+                        </div>
+                     </div>
+                  </header>
+                  <section class="card-body pt-3">
+                     <div class="container border rounded p-3">
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeTopografo" class="form-label">Nome</label>
+                                 <input type="text" id="nomeTopografo" name="nomeTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="rgTopografo" class="form-label">RG</label>
+                                 <input type="number" id="rgTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cpfTopografo" class="form-label">CPF</label>
+                                 <input type="number" id="cpfTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeFantasiaTopografo" class="form-label">Nome Fantasia</label>
+                                 <input type="text" id="nomeFantasiaTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cnpjTopografo" class="form-label">CNPJ</label>
+                                 <input type="number" id="cnpjTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="registroTopografo" class="form-label">Nº CFT</label>
+                                 <input type="number" id="registroTopografo" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="input-group-dynamic mt-4">
+                           <label class="form-label">Documentos Pessoais</label>
+                           <div action="/file-upload" class="form-control border dropzone text-center" id="dropzoneTopografo">
+                              <div class="fallback">
+                                 <input name="file" type="file" multiple />
+                              </div>
+                              <div class="dz-message">
+                                 <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                 <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-end mt-4">
+                        <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                        <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                     </div>
+                  </section>
+               </article>
+            </form>
+         </div>
+         <!-- Engenheiro -->
+         <div class="col-sm-4 mb-5 mb-sm-0">
+            <form method="post" id="engenheiro" data-form-url="{% url 'engenheiro_form' %}">
+               {% csrf_token %}
+               <article class="card h-100">
+                  <header class="card-header pb-0 p-3">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h6 class="mb-0">Engenheiro(a)</h6>
+                        </div>
+                     </div>
+                  </header>
+                  <section class="card-body pt-3">
+                     <div class="container border rounded p-3">
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeEngenheiro" class="form-label">Nome</label>
+                                 <input type="text" id="nomeEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="rgEngenheiro" class="form-label">RG</label>
+                                 <input type="number" id="rgEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cpfEngenheiro" class="form-label">CPF</label>
+                                 <input type="number" id="cpfEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeFantasiaEngenheiro" class="form-label">Nome Fantasia</label>
+                                 <input type="text" id="nomeFantasiaEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cnpjEngenheiro" class="form-label">CNPJ</label>
+                                 <input type="number" id="cnpjEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="registroEngenheiro" class="form-label">Nº CREA</label>
+                                 <input type="number" id="registroEngenheiro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="input-group-dynamic mt-4">
+                           <label class="form-label">Documentos Pessoais</label>
+                           <div action="/file-upload" class="form-control border dropzone text-center" id="dropzoneEngenheiro">
+                              <div class="fallback">
+                                 <input name="file" type="file" multiple />
+                              </div>
+                              <div class="dz-message">
+                                 <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                 <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-end mt-4">
+                        <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                        <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                     </div>
+                  </section>
+               </article>
+            </form>
+         </div>
+         <!-- Advogado -->
+         <div class="col-sm-4">
+            <form method="post" id="advogado" data-form-url="{% url 'advogado_form' %}">
+               {% csrf_token %}
+               <article class="card h-100">
+                  <header class="card-header pb-0 p-3">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h6 class="mb-0">Advogado(a)</h6>
+                        </div>
+                     </div>
+                  </header>
+                  <section class="card-body pt-3">
+                     <div class="container border rounded p-3">
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeAdvogado" class="form-label">Nome</label>
+                                 <input type="text" id="nomeAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="rgAdvogado" class="form-label">RG</label>
+                                 <input type="number" id="rgAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cpfAdvogado" class="form-label">CPF</label>
+                                 <input type="number" id="cpfAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="nomeFantasiaAdvogado" class="form-label">Nome Fantasia</label>
+                                 <input type="text" id="nomeFantasiaAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="cnpjAdvogado" class="form-label">CNPJ</label>
+                                 <input type="number" id="cnpjAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="registroAdvogado" class="form-label">Nº OAB</label>
+                                 <input type="number" id="registroAdvogado" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="input-group-dynamic mt-4">
+                           <label class="form-label">Documentos Pessoais</label>
+                           <div action="/file-upload" class="form-control border dropzone text-center" id="dropzoneAdvogado">
+                              <div class="fallback">
+                                 <input name="file" type="file" multiple />
+                              </div>
+                              <div class="dz-message">
+                                 <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                 <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-end mt-4">
+                        <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                        <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                     </div>
+                  </section>
+               </article>
+            </form>
+         </div>
+      </div>
+   </div>

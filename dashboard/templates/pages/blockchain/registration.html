@@ -1,0 +1,130 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% block extrastyle %}
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/carousel.css'%}">
+{% endblock %}
+
+   <div class="container-fluid py-4">
+      <!-- User Header -->
+      {% include 'pages/users/includes/user_header.html' %}
+   </div>   
+   <!-- Info Slider mobile -->
+   {% include 'pages/blockchain/includes/info_slider_mobile.html' %}
+   <!-- Owners -->
+   {% include 'pages/blockchain/includes/owners.html' %}
+   <!-- Geographic location -->
+   {% include 'pages/blockchain/includes/location.html' %}
+   <!-- City hall y Notary's Office -->
+   {% include 'pages/blockchain/includes/city_hall_notary_office.html' %}
+   <!-- Professionals -->
+   {% include 'pages/blockchain/includes/professionals.html' %}
+   <!-- Images of Houses -->
+   {% include 'pages/blockchain/includes/house_images.html' %}
+   <!-- Architectural Plan -->
+   {% include 'pages/blockchain/includes/architecture.html' %}
+   <!-- Topographic Plan -->
+   {% include 'pages/blockchain/includes/topography.html' %}
+   <!-- Zoning Plan -->
+   {% include 'pages/blockchain/includes/zoning.html' %}
+
+   <div class="d-flex container-fluid py-4 justify-content-end">
+      {% csrf_token %}
+      <button name="button" id="botaoGerar" class="btn bg-gradient-primary btn-sm mb-2">Gerar Documento</button>
+   </div>
+
+{% include 'includes/footer.html' %}
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+    function showImageByZone(zoneOfClick, imageContainerSelector, inputId, classImage, classImageList) {
+        document.getElementById(zoneOfClick).addEventListener('click', function() {
+            let imageContainers = document.querySelectorAll(imageContainerSelector);
+            
+            let image = imageContainers[0].querySelectorAll(classImage);
+            if (image.length > 0) {
+                document.getElementById(inputId).click();
+            }
+        });
+
+        document.getElementById(inputId).addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            let imageContainers = document.querySelectorAll(imageContainerSelector);
+            
+            if (file) {
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imageContainers.forEach(function(imageContainer) {
+                        let img = document.createElement('img');
+                        img.classList = [classImageList];
+                        img.src = e.target.result;
+                        img.alt = 'Imagem Selecionada';
+
+                        imageContainer.innerHTML = '';
+                        imageContainer.appendChild(img);
+                    });
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    function showMultipleImages(imageInputId, imageContainerId){
+        document.getElementById(imageInputId).addEventListener('change', function(event) {
+            let imageContainer = document.getElementById(imageContainerId);
+            // imageContainer.innerHTML = ''; // Limpa as imagens anteriores
+        
+            let files = event.target.files;
+        
+            for (let file of files) {
+                if (file.type.startsWith('image/')) {
+                    let reader = new FileReader();
+        
+                    reader.onload = function(e) {
+                        let figure = document.createElement('figure');
+                        figure.classList = 'col-6 col-lg-4 col-xxl-3 px-1'
+                        let img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList = 'w-100';
+                        figure.appendChild(img);
+                        imageContainer.appendChild(figure);
+                    };
+        
+                    reader.readAsDataURL(file);
+                }
+            }
+        });        
+    }
+
+    
+    showImageByZone('dropzone-house', '#image-house-content', 'image-house-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+    showImageByZone('dropzone-architecture', '#architecture-house-content', 'architecture-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+    showImageByZone('dropzone-topography', '#topography-content', 'topography-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+    showImageByZone('dropzone-zoning', '#zoning-content', 'zoning-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+    showImageByZone('dropzoneProfileImage', '.profileMainContent', 'imageProfileInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
+    showImageByZone('dropzoneProfileImageSecondary', '.profileSecondaryContent', 'imageProfileSecondaryInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
+    
+    showMultipleImages('image-house-input', 'galleryHouse')
+    showMultipleImages('architecture-input', 'galleryArquiteture')
+    showMultipleImages('topography-input', 'galleryTopography')
+    showMultipleImages('zoning-input', 'galleryZoning')
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{% static 'assets/js/plugins/sweetalert.min.js' %}"></script>
+    <script src="{% static 'assets/js/registration/scripts.js' %}"></script>
+    <script src="{% static 'assets/js/registration/forms.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/multistep-form.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/dropzone.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/flatpickr.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/choices.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/quill.min.js' %}"></script>
+{% endblock extra_js %}

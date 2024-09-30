@@ -15,63 +15,7 @@
     </button>
     <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
       <ul class="navbar-nav navbar-nav-hover mx-auto">
-        {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-              Pages
-              <img src="{% static 'assets/img/down-arrow-white.svg' %}  " alt="down-arrow" class="arrow ms-1 d-lg-block d-none">
-              <img src="{% static 'assets/img/down-arrow-dark.svg' %}" alt="down-arrow" class="arrow ms-1 d-lg-none d-block">
-            </a>
-            <div class="dropdown-menu dropdown-menu-animation dropdown-xl p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
-              <div class="row d-none d-lg-block">
-                <div class="col-12 px-4 py-2">
-                  <div class="row">
-                    <div class="col-4 position-relative">
-                      <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0">
-                        <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
-                        Dashboards
-                      </div>
-                      <a href="{% url 'index' %}" class="dropdown-item border-radius-md">
-                        <span class="ps-2">Analytics</span>
-                      </a>                    
-                      <a href="{% url 'sales' %}" class="dropdown-item border-radius-md">
-                        <span class="ps-2">Sales</span>
-                      </a>                    
-                      <a href="{% url 'smart_home' %}" class="dropdown-item border-radius-md">
-                        <span class="ps-2">Smart Home</span>
-                      </a>
-                      <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center mt-3 px-0">
-                        <i class="material-icons opacity-6 me-2 text-md">people</i>
-                        Users
-                      </div>
-                      
-                      <hr class="vertical dark">
-                    </div>
-                    
-                    
-                  </div>
-                </div>
-              </div>
-              <!-- responsive -->
-              <div class="d-lg-none">
-                <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0">
-                  <i class="material-icons text-dark opacity-6 me-2 text-md">dashboard</i>
-                  Dashboards
-                </div>
-                <a href="{% url 'index' %}" class="dropdown-item border-radius-md">
-                  Analytics
-                </a>              
-                <a href="{% url 'sales' %}" class="dropdown-item border-radius-md">
-                  Sales
-                </a>              
-                <a href="{% url 'smart_home' %}" class="dropdown-item border-radius-md">
-                  Smart Home
-                </a>              
-              </div>
-            </div>
-          </li>
-        {% endif %}
-        
+                
         {% if request.user.is_authenticated %}
           <li class="nav-item dropdown dropdown-hover mx-2">
             <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,10 +24,9 @@
               <img src="{% static 'assets/img/down-arrow-dark.svg' %}" alt="down-arrow" class="arrow ms-1 d-lg-none d-block">
             </a>
             <div class="dropdown-menu dropdown-menu-animation dropdown-md dropdown-md-responsive p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuBlocks">
-              <div class="d-none d-lg-block">
-                <ul class="list-group">
-                  
-                </ul>
+              <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0">
+                <i class="material-icons opacity-6 me-2 text-md">shopping_cart</i>
+                Orders
               </div>
               <!-- responsive -->
               <div class="row d-lg-none">

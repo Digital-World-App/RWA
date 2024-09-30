@@ -1,0 +1,149 @@
+{% load static %}
+<div class="container-fluid py-4">
+   <div class="row">
+      <div class="col-12">
+         <form method="post" id="localizacao_geografica" data-form-url="{% url 'localizacao_geografica_form' %}">
+            {% csrf_token %}
+            <div class="card">
+               <div class="card-body">
+                  <h4 class="mb-4">Localização Geográfica</h4>
+                  <!-- Alterado de <h5> para <h4> -->
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <div class="col-12 d-flex justify-content-center py-4">
+                           <iframe class="map rounded" id="gmap_canvas" src="https://maps.google.com/maps?q=-22.4795567,-44.2864697&t=&z=8&ie=UTF8&iwloc=&output=embed" style="width: 100%; height: 500px;"></iframe>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 mt-4">
+                        <div class="container border rounded p-3">
+                           <h5 class="font-weight-bolder mb-4">Endereço</h5>
+                           <!-- Mantido como <h5> -->
+                           <div class="row mt-4">
+                              <div class="col-12 col-sm-6">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="pais" class="form-label">País</label> <!-- Adicionado o rótulo explícito -->
+                                    <input type="text" id="pais" value="Brasil" disabled class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                 <select class="form-control" name="choices-states" id="estado">
+                                    <option value="" disabled selected hidden>Estados</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="row mt-4">
+                              <div class="col-12 col-sm-6">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="municipio" class="form-label">Município</label>
+                                    <input type="text" id="municipio" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="bairro" class="form-label">Bairro</label>
+                                    <input type="text" id="bairro" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row mt-4">
+                              <div class="col-4">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="rua" class="form-label">Rua</label>
+                                    <input type="text" id="rua" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <div class="col-4">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="quadra" class="form-label">Quadra</label>
+                                    <input type="text" id="quadra" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <div class="col-4">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="lote" class="form-label">Lote</label>
+                                    <input type="text" id="lote" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row mt-4">
+                              <div class="col-12 col-sm-6">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="cep" class="form-label">CEP</label>
+                                    <input type="text" id="cep" class="form-control w-100" name="cep" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="numero" class="form-label">Número</label>
+                                    <input type="number" id="numero" class="form-control w-100" name="cep" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row mt-4">
+                              <!-- Campo Latitude -->
+                              <div class="col-12 col-sm-6">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="latitude" class="form-label">Latitude</label>
+                                    <input type="number" step="0.000001" id="latitude" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                              <!-- Campo Longitude -->
+                              <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="longitude" class="form-label">Longitude</label>
+                                    <input type="number" step="0.000001" id="longitude" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <label class="mt-4 ms-0 form-label">Categoria</label>
+                                 <select class="form-control" name="propriedade" id="propriedade">
+                                    <option value="Urbano" selected="selected">Urbano</option>
+                                    <option value="Rural">Rural</option>
+                                    <option value="Litorâneo">Litorâneo</option>
+                                    <option value="Montanhoso">Montanhoso</option>
+                                    <option value="Inland">Inland</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="d-flex justify-content-end mt-4">
+                     <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                     <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

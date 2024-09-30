@@ -1,0 +1,594 @@
+{% extends 'layouts/base-fullscreen.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="page-header bg-gradient-dark position-relative m-3 border-radius-xl" style="height: 600px; position: relative;">
+        <!-- Mapa usando Mapbox GL JS -->
+        <div id="mapid" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1;"></div>        
+        
+        
+    </div>
+
+
+    <!-- Adicionando um espaçamento abaixo do mapa para evitar sobreposição -->
+    <div class="container-fluid px-5 my-6" style="margin-top: -30px; position: relative; z-index: 2;">
+        <div class="row mt-n8">
+            <div class="col-sm-4">
+                <div class="card border-1">
+                <div class="card-body p-3 position-relative">
+                    <div class="row">
+                    <div class="col-7 text-start">
+                        <p class="text-sm mb-1 text-capitalize font-weight-bold">CADASTRADOS</p>
+                        
+                        <h5 class="font-weight-bolder mb-0">
+                        $0,00
+                        </h5>
+                        <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+00% <span class="font-weight-normal text-secondary"></span></span>
+                    </div>
+                    <div class="col-5">
+                        <div class="dropdown text-end">
+                        <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-xs text-secondary">6 May - 7 May</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers1">
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-sm-0 mt-4">
+                <div class="card border-1">
+                <div class="card-body p-3 position-relative">
+                    <div class="row">
+                    <div class="col-7 text-start">
+                        <p class="text-sm mb-1 text-capitalize font-weight-bold">TOKENIZADOS</p>
+                        
+                        <h5 class="font-weight-bolder mb-0">
+                        0.00
+                        </h5>
+                        <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+00% <span class="font-weight-normal text-secondary"></span></span>
+                    </div>
+                    <div class="col-5">
+                        <div class="dropdown text-end">
+                        <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-xs text-secondary">6 May - 7 May</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers2">
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-sm-0 mt-4">
+                <div class="card border-1">
+                <div class="card-body p-3 position-relative">
+                    <div class="row">
+                    <div class="col-7 text-start">
+                        <p class="text-sm mb-1 text-capitalize font-weight-bold">NEGOCIAÇÕES</p>
+                        
+                        <h5 class="font-weight-bolder mb-0">
+                        $0.00
+                        </h5>
+                        <span class="font-weight-normal text-secondary text-sm"><span class="font-weight-bolder text-success">+$00</span></span>
+                    </div>
+                    <div class="col-5">
+                        <div class="dropdown text-end">
+                        <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-xs text-secondary">6 May - 7 May</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers3">
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row text-center mt-4">
+                <div class="nav-wrapper p-0">
+                    <ul class="nav nav-pills nav-fill d-flex flex-wrap p-1" id="tabs-pricing" role="tablist">
+                        <li class="nav-item col-12 col-md-2">
+                            <a class="nav-link mb-0 active" id="tabs-iconpricing-tab-1" data-bs-toggle="tab" href="#equipe">
+                                UTM
+                            </a>
+                        </li>
+                        <li class="nav-item col-12 col-md-2">
+                            <a class="nav-link mb-0" id="tabs-iconpricing-tab-2" data-bs-toggle="tab" href="#colaboradores">
+                                IMÓVEIS
+                            </a>
+                        </li>              
+                        <li class="nav-item col-12 col-md-2">
+                            <a class="nav-link mb-0" id="tabs-iconpricing-tab-6" data-bs-toggle="tab" href="#associacoes">
+                                EMPRESAS
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>            
+    </div>
+  
+ 
+    <div class="container-fluid py-4">    
+        <div class="row mt-4">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">RJ/Rio de Janeiro</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>  
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3225723.211578004!2d-45.57462367431581!3d-22.044302482020186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x981894cae28ac3%3A0x349c31ac10583d0!2sRio%20de%20Janeiro!5e1!3m2!1spt-BR!2sbr!4v1714661649162!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">SP/São Paulo</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6429413.2279529!2d-53.933704629421634!3d-22.482026695931033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce597d462f58ad%3A0x1e5241e2e17b7c17!2sS%C3%A3o%20Paulo!5e1!3m2!1spt-BR!2sbr!4v1714660444479!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div> 
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">MG/Minas Gerais</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6598513.265207101!2d-50.75100529010585!3d-18.50397312178838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690a165324289%3A0x112170c9379de7b3!2sMinas%20Gerais!5e1!3m2!1spt-BR!2sbr!4v1714661796853!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">BH/Bahia</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6773456.316213544!2d-47.26568323086867!3d-13.379282647189203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x716037ca23ca5b3%3A0x7e926f5fb491ed05!2sBahia!5e1!3m2!1spt-BR!2sbr!4v1714666564423!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>   
+        </div>
+        <div class="row mt-4">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">RS/Rio Grande do Sul</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>  
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6015656.61002868!2d-58.96784047846036!3d-30.29515007059886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9504720c40b45803%3A0xad9fb3dbaf9f73de!2sRio%20Grande%20do%20Sul!5e1!3m2!1spt-BR!2sbr!4v1714668958573!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">SC/Santa Catarina</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6185296.928511933!2d-57.140127413631696!3d-27.120625086864695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d94d25c052fff9%3A0x2b277580ed7fab2b!2sSanta%20Catarina!5e1!3m2!1spt-BR!2sbr!4v1714669130445!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div> 
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">PR/Paraná</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163503.6475910605!2d-53.96356092651352!3d-24.593638760185893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94db0b9430b8629d%3A0xe893fd5063cef061!2zUGFyYW7DoQ!5e1!3m2!1spt-BR!2sbr!4v1714669915621!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">MS/Mato Grosso do Sul</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6516709.946073988!2d-59.846281727237866!3d-20.529979578412213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x947e91dbe29f7383%3A0x351cd8e9695410ac!2sMato%20Grosso%20do%20Sul!5e1!3m2!1spt-BR!2sbr!4v1714670051057!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>   
+        </div>
+        <div class="row mt-4">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">AM/Amazonas</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>  
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13887052.395027708!2d-75.64496033874455!3d-3.7270940217610193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92183f5c8b1d6ed1%3A0x176d6af66b3c2efa!2sAmazonas!5e1!3m2!1spt-BR!2sbr!4v1714670595873!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">AC/Acre</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13738719.763207274!2d-85.36188066798636!3d-8.998242875793084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x917f8daa4e9106b9%3A0x25ec0ac5083607c1!2sAcre!5e1!3m2!1spt-BR!2sbr!4v1714670998894!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">RO/Rondônia</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13672536.79496838!2d-62.587668330790876!3d-13.046531351470023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92325cd96f516b57%3A0x733763d5340621dd!2zUm9uZMO0bmlh!5e1!3m2!1spt-BR!2sbr!4v1714670731640!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div> 
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card h-100 border-1">
+                <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mb-0">MT/Mato Grosso</h6>
+                        <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="See traffic channels">
+                            <i class="material-icons text-sm">priority_high</i>
+                        </button>
+                    </div>
+                </div>              
+                <div class="card-body pb-0 p-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center py-1">
+                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13581655.506370543!2d-66.67687993303268!3d-12.63497358630886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1e748370319%3A0xc66268e27d2181fb!2sMato%20Grosso!5e1!3m2!1spt-BR!2sbr!4v1714670855502!5m2!1spt-BR!2sbr" style="width: 100%; height: 400px; border: none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+                    
+                </div>
+            </div>
+        </div>         
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block footer %}
+
+  {% include 'includes/footer-fullscreen.html' %}
+
+{% endblock footer %}
+
+
+{% block extra_js %}
+
+    <!-- Mapbox GL CSS e JS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    
+    <style>
+        /* Estilo para o marcador */
+        .marker {
+          background-image: url('/static/assets/img/logos/CultivaAgro.png'); /* Caminho relativo ao diretório do servidor */
+          background-size: cover;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid white;
+        }
+    
+        /* Estilo para o popup */
+        .popup-content {
+          display: flex;
+          flex-direction: column; /* Coloca a imagem e o texto em uma coluna */
+          align-items: center; /* Centraliza o conteúdo horizontalmente */
+          justify-content: center; /* Centraliza o conteúdo verticalmente */
+          text-align: center; /* Centraliza o texto no popup */
+          padding: 5px; /* Afastamento interno reduzido */
+        }
+    
+        .popup-content img {
+          width: 100%; /* Adapta a imagem ao tamanho do popup */
+          height: auto; /* Mantém a proporção da imagem */
+          border-radius: 12px; /* Bordas arredondadas */
+          margin-bottom: 5px; /* Espaçamento entre a imagem e o texto */
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+          object-fit: cover; /* Preenche o espaço da imagem sem distorção */
+          transition: transform 0.3s ease; /* Animação suave no hover */
+        }
+    
+        .popup-content img:hover {
+          transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+        }
+    
+        .mapboxgl-popup {
+          max-width: 300px; /* Limita o tamanho máximo do popup */
+          width: auto; /* Garante que o popup se ajuste ao conteúdo */
+        }
+    
+        .mapboxgl-popup-content {
+          border-radius: 12px; /* Bordas arredondadas no popup */
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra mais forte para o efeito fumê */
+          padding: 10px;
+          background-color: rgba(30, 30, 30, 0.3); /* Cor mais escura com 30% de opacidade para o efeito fumê */
+          backdrop-filter: blur(3px) saturate(120%); /* Reduz o desfoque para 3px para permitir ver 50% da imagem */
+          border: 1px solid rgba(255, 255, 255, 0.3); /* Borda mais leve para o efeito cristalizado */
+          background-clip: padding-box; /* Faz com que o efeito de vidro afete somente o conteúdo */
+        }
+    
+        .popup-content h3 {
+          margin: 0; /* Remove margens do título */
+          font-size: 16px; /* Tamanho da fonte do título */
+          color: white; /* Texto em branco para contraste com o fundo fumê */
+        }
+    
+        .popup-content p {
+          font-size: 14px; /* Tamanho da fonte da descrição */
+          color: rgba(255, 255, 255, 0.8); /* Texto com 80% de opacidade */
+        }
+    </style>
+    
+    <script>
+        // Token do Mapbox
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHJvYWFhIiwiYSI6ImNtMTgyMDIxMTA2dGkybHEybmt0Z3JhZXYifQ.yiy5Vf1xtAmHfGdTdUoiNg';
+      
+        // Inicialização do Mapbox        
+        var map = new mapboxgl.Map({
+          container: 'mapid',  // ID da div onde o mapa será renderizado
+          style: 'mapbox://styles/sandroaaa/cm182mp2e00kv01pc68v25dgh',  // Estilo do mapa
+          center: [-60, -15],  // Coordenadas da América do Sul para focar na região desejada
+          zoom: 1.5,  // Nível de zoom ajustado para uma boa visão da América Latina
+          projection: 'globe'  // Projeção do globo (3D)
+        });
+      
+        // Ajuste de estilo do globo para carregamento correto
+        map.on('style.load', () => {
+          map.setFog({});  // Opcional: adicione névoa para um visual mais realista no globo
+        });
+      
+        // Lista de pontos georreferenciados passada pelo Django
+        var geoPoints = {{ geo_points|safe }};
+      
+        // Variável para armazenar o timeout do popup
+        let popupTimeout;
+      
+        // Iterar sobre os pontos e adicionar marcadores com popups no mapa
+        geoPoints.forEach(function(point) {
+          // Criar o elemento do marcador
+          var el = document.createElement('div');
+          el.className = 'marker';
+      
+          // Criar o conteúdo do popup com imagem, nome, descrição e botão
+          var popupContent = `
+            <div class="popup-content" id="popup-${point.id}">
+              <img src="${point.image}" alt="${point.name}">
+              <h3>${point.name}</h3>
+              <p>${point.description}</p>
+              <button onclick="window.location.href='/ecommerce/emporium/'" 
+                      style="padding: 5px 10px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;">
+                Ver Mais
+              </button>
+            </div>
+          `;
+      
+          // Criar o popup
+          var popup = new mapboxgl.Popup({
+            offset: 25,
+            closeButton: false,
+            closeOnClick: false
+          }).setHTML(popupContent);
+      
+          // Adicionar o marcador ao mapa
+          var marker = new mapboxgl.Marker(el)
+            .setLngLat([point.lng, point.lat])
+            .addTo(map);
+      
+          // Função para exibir o popup ao passar o mouse sobre o marcador
+          const showPopup = () => {
+            clearTimeout(popupTimeout);  // Cancelar qualquer tentativa de fechar o popup
+            popup.setLngLat([point.lng, point.lat]).addTo(map);  // Exibir o popup
+            map.flyTo({ center: [point.lng, point.lat], zoom: 5 });  // Centralizar o mapa no ponto
+          };
+      
+          // Função para ocultar o popup com delay
+          const hidePopup = () => {
+            popupTimeout = setTimeout(() => {
+              popup.remove();  // Remover o popup após o delay
+            }, 2000);  // Atraso de 2000ms
+          };
+      
+          // Exibir o popup ao passar o mouse sobre o marcador
+          el.addEventListener('mouseenter', showPopup);
+      
+          // Esconder o popup ao sair do marcador (com delay para permitir mover o mouse até o popup)
+          el.addEventListener('mouseleave', hidePopup);
+      
+          // Manipular eventos de mouse sobre o popup
+          document.addEventListener('mouseover', function (e) {
+            const popupElement = document.querySelector(`#popup-${point.id}`);
+            if (popupElement && popupElement.contains(e.target)) {
+              clearTimeout(popupTimeout);  // Se o mouse estiver sobre o popup, cancelar o fechamento
+            }
+          });
+      
+          // Fechar o popup quando o mouse sair completamente do popup
+          document.addEventListener('mouseout', function (e) {
+            const popupElement = document.querySelector(`#popup-${point.id}`);
+            if (popupElement && !popupElement.contains(e.relatedTarget)) {
+              hidePopup();  // Se o mouse sair completamente do popup, iniciar o fechamento
+            }
+          });
+        });
+    </script>
+
+    <script src="{% static 'assets/js/plugins/nouislider.min.js' %}"></script>
+    <script>
+        // Slider inicialização
+        var slider = document.getElementById("sliderRegular");
+        noUiSlider.create(slider, {
+          start: 40,
+          connect: [true, false],
+          range: {
+            min: 0,
+            max: 100
+          }
+        });
+    </script>
+
+    <script>
+        // Barra de rolagem personalizada para Windows
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+{% endblock extra_js %}

@@ -1,0 +1,291 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Crie Seu NFT Exclusivo</h4>
+          <p>Dê vida às suas ideias criando NFTs exclusivos de forma simples e rápida.</p>
+        </div>
+        <div class="col-lg-6 text-right d-flex flex-column justify-content-center">
+          <button type="button" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Criar</button>
+        </div>
+      </div>      
+      
+      <div class="row mt-4">
+        <div class="col-lg-4">
+          <div class="card mt-4" data-animation="true">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <a class="d-block blur-shadow-image">
+                <img src="{% static 'assets/img/blockchain/nft/nft.png' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+              </a>
+              <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/blockchain/nft/nft.png' %}&quot;);"></div>
+            </div>
+            <div class="card-body text-center">
+              <div class="mt-n6 mx-auto">
+                <button class="btn bg-gradient-primary btn-sm mb-0 me-2" type="button" name="button">Editar</button>
+                <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remover</button>
+              </div>
+              <h5 class="font-weight-normal mt-4">
+                Imagem do NFT
+              </h5>              
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 mt-lg-0 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="font-weight-bolder">Informações do Produto</h5>
+              <div class="row mt-4">
+                <div class="col-12 col-sm-6">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Coleção:</label>
+                    <input type="text" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-4">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Resolução:</label>
+                    <input type="text" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Formato de Arquivo:</label>
+                    <input type="text" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Raridade:</label>
+                    <input type="text" class="form-control w-100" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label class="mt-4">Descrição</label>
+                  <p class="form-text text-muted text-xs ms-1 d-inline">
+                    (opcional)
+                  </p>
+                  <div id="edit-deschiption-edit" class="h-50">
+                    adicione a descrição completa do seu NFT
+                  </div>
+                </div>
+                <div class="col-sm-6">                  
+                  <label class="mt-4 ms-0">Cor principal</label>
+                  <select class="form-control" name="choices-color" id="choices-color-edit">
+                    <option value="Preto" selected="">Preto</option>
+                    <option value="Branco">Branco</option>
+                    <option value="Azul">Azul</option>
+                    <option value="Laranja">Laranja</option>
+                    <option value="Verde">Verde</option>
+                    <option value="Vermelho">Vermelho</option>
+                    <option value="Amarelo">Amarelo</option>
+                    <option value="Roxo">Roxo</option>
+                    <option value="Rosa">Rosa</option>
+                    <option value="Cinza">Cinza</option>
+                    <option value="Marrom">Marrom</option>
+                    <option value="Bege">Bege</option>
+                  </select>
+                  <label class="mt-2 ms-0">Categoria</label>
+                  <select class="form-control" name="choices-category" id="choices-category-edit">
+                    <option value="Fotos de Perfil (PFPs)" selected="">Fotos de Perfil (PFPs)</option>
+                    <option value="Arte Digital">Arte Digital</option>
+                    <option value="Música">Música</option>
+                    <option value="Itens de Jogos">Itens de Jogos</option>
+                    <option value="Imóveis Virtuais">Imóveis Virtuais</option>
+                    <option value="Utilidade">Utilidade</option>
+                    <option value="Identidade">Identidade</option>
+                    <option value="Vídeos e Filmes">Vídeos e Filmes</option>
+                    <option value="Nomes de Domínio">Nomes de Domínio</option>
+                    <option value="Moda">Moda</option>
+                    <option value="Fotografia">Fotografia</option>
+                    <option value="Literatura">Literatura</option>                    
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="font-weight-bolder">Redes Sociais</h5>
+              <div class="input-group input-group-dynamic mt-3">
+                <label class="form-label">Github</label>
+                <input type="url" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+              </div>
+              <div class="input-group input-group-dynamic my-3">
+                <label class="form-label">Twitter</label>
+                <input type="url" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+              </div>
+              <div class="input-group input-group-dynamic">
+                <label class="form-label">Instagram</label>
+                <input type="url" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 mt-sm-0 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="font-weight-bolder mb-3">Preços</h5>
+                <div class="col-3">
+                  <div class="input-group input-group-dynamic">
+                    <label class="form-label">Preço</label>
+                    <input type="text" class="form-control w-100" aria-describedby="emailHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <select class="form-control" name="choices-sizes" id="choices-currency-edit">
+                    <option value="USD" selected="">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CNY">CNY</option>
+                    <option value="INR">INR</option>
+                    <option value="BTC">BTC</option>
+                  </select>
+                </div>
+                <div class="col-5">
+                  <div class="input-group input-group-dynamic">                    
+                    <select class="form-control" name="choices-blockchain" id="choices-blockchain">
+                        <option value="Ethereum" selected>Ethereum</option>
+                        <option value="Bitcoin">Bitcoin</option>
+                        <option value="Binance Smart Chain">Binance Smart Chain</option>
+                        <option value="Polkadot">Polkadot</option>
+                        <option value="Cardano">Cardano</option>
+                        <option value="Solana">Solana</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <label class="mt-4">Tags</label>
+                  <select class="form-control" name="choices-tags" id="choices-tags-edit" multiple>                    
+                    <option value="Avatares">Avatares</option>
+                    <option value="Identidade Digital">Identidade Digital</option>
+                    <option value="Colecionáveis Digitais">Colecionáveis Digitais</option>
+                    <option value="Comunidade Virtual">Comunidade Virtual</option>
+                    <option value="Mercado de Arte Digital">Arte Digital</option>
+                    <option value="Colecionáveis Artísticos">Colecionáveis</option>
+                    <option value="Royalties Digitais">Royalties Digitais</option>
+                    <option value="Economia Virtual">Economia Virtual</option>
+                    <option value="Investimento em Metaverso">Investimento em Metaverso</option>
+                    <option value="Acesso Exclusivo">Acesso Exclusivo</option>
+                    <option value="Programas de Recompensas">Programas de Recompensas</option>
+                    <option value="Autenticação Descentralizada">Autenticação Descentralizada</option>
+                    <option value="Credenciais Digitais">Credenciais Digitais</option>
+                    <option value="Distribuição de Conteúdo">Distribuição de Conteúdo</option>
+                    <option value="Streaming Descentralizado">Streaming Descentralizado</option>
+                    <option value="Propriedade Digital">Propriedade Digital</option>
+                    <option value="Mercado de Domínios">Mercado de Domínios</option>
+                    <option value="Colecionáveis de Moda">Colecionáveis de Moda</option>                    
+                    <option value="Mercado de Fotografia Digital">Fotografia Digital</option>                    
+                    <option value="Mercado de Literatura Digital">Literatura Digital</option>                    
+                    <option value="Mercado de Memorabilia Esportiva">Mercado de Memorabilia Esportiva</option>
+                  </select>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+    <footer class="footer py-4  ">
+      
+    </footer>
+    </div>
+{% endblock content %}
+
+
+{% block extra_js %}
+
+  <script src="{% static 'assets/js/plugins/choices.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/quill.min.js' %}"></script>
+  <script>
+    if (document.getElementById('edit-deschiption-edit')) {
+      var quill = new Quill('#edit-deschiption-edit', {
+        theme: 'snow' // Specify theme in configuration
+      });
+    };
+
+    if (document.getElementById('choices-category-edit')) {
+      var element = document.getElementById('choices-category-edit');
+      const example = new Choices(element, {
+        searchEnabled: false
+      });
+    };
+
+    if (document.getElementById('choices-color-edit')) {
+      var element = document.getElementById('choices-color-edit');
+      const example = new Choices(element, {
+        searchEnabled: false
+      });
+    };
+
+    if (document.getElementById('choices-currency-edit')) {
+      var element = document.getElementById('choices-currency-edit');
+      const example = new Choices(element, {
+        searchEnabled: false
+      });
+    };
+
+    if (document.getElementById('choices-blockchain')) {
+      var element = document.getElementById('choices-blockchain');
+      const example = new Choices(element, {
+        searchEnabled: false
+      });
+    };
+
+    if (document.getElementById('choices-tags-edit')) {
+      var tags = document.getElementById('choices-tags-edit');
+      const examples = new Choices(tags, {
+        removeItemButton: true
+      });
+
+      examples.setChoices(
+        [{
+            value: 'One',
+            label: 'Expired',
+            disabled: true
+          },
+          {
+            value: 'Two',
+            label: 'Out of Stock',
+            selected: true
+          }
+        ],
+        'value',
+        'label',
+        false,
+      );
+    }
+  </script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+{% endblock extra_js %}

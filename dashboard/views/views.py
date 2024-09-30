@@ -2,8 +2,26 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
 from dashboard.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, UserPasswordChangeForm
 from django.contrib.auth import logout
+from dotenv import load_dotenv
+import os
+from django.contrib.auth.views import (
+    LoginView,
+    PasswordResetView,
+    PasswordChangeView,
+    PasswordResetConfirmView
+)
+from dashboard.forms import (
+    RegistrationForm,
+    LoginForm,
+    UserPasswordResetForm,
+    UserSetPasswordForm,
+    UserPasswordChangeForm
+)
+
 
 # Create your views here.
+
+load_dotenv()
 
 # Dashboard
 def analytics(request):
@@ -34,7 +52,62 @@ def test(request):
     'segment': 'test'
   }
   return render(request, 'pages/applications/test.html', context)
-  
+
+# Blockchain
+def nft(request):
+	context = {
+		'parent': 'blockchain',
+		'segment': 'nft'
+	}
+	return render(request, 'pages/blockchain/nft.html', context)
+
+def registration(request):
+	herdeiros = ['Alex', 'Jhon', 'Lewis', 'Daniel'] # Variável somente para o carrousel da partial owners.html
+	return render(request, 'pages/blockchain/registration.html', {'herdeiros': herdeiros})
+
+def marketplace(request):
+
+	geo_points = [
+        
+        {
+            "lat": -23.22155,
+            "lng": -44.71992,
+            "name": "Paraty/RJ",
+            "description": "Mercado Municipal do Produtor Rural de Paraty.",
+            "image": "https://i.postimg.cc/7PcgqgTq/Paraty.png"
+        }        
+    ]
+
+	context = {
+		'parent': 'blockchain',
+		'segment': 'marketplace',
+		'geo_points': geo_points
+	}
+	return render(request, 'pages/blockchain/marketplace.html', context)
+
+def defi(request):
+	cryptos = get_cryptos()
+	crypto_paginated = add_pagination(request, cryptos, 50)
+	context = {
+    	'objects': crypto_paginated,
+    }
+	return render(request, 'pages/blockchain/defi.html', context)
+
+def token(request):
+	context = {
+		'parent': 'blockchain',
+		'segment': 'token'
+	}
+	return render(request, 'pages/blockchain/token.html', context)
+
+def storage(request):
+	context = {
+		'parent': 'blockchain',
+		'segment': 'storage'
+	}
+	return render(request, 'pages/blockchain/storage.html', context)
+
+
 # Authentication -> Login
 class BasicLoginView(LoginView):
   template_name = 'accounts/signin/basic.html'

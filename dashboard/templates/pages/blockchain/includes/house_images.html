@@ -1,0 +1,190 @@
+{% load static %}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">Fotos do Imóvel</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div>
+                                <label id="image-house-content" class="btn p-0 m-0">
+                                    <fieldset class="col-12 d-flex justify-content-center py-4">
+                                        <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{% static 'assets/img/blockchain/escritura/f.casa.jpg' %}" alt="chair">
+                                    </fieldset>
+                                </label>
+                                <input name="image_house" type="file" id="image-house-input" class="d-none form-control-lg" multiple/>
+                            </div>
+                            <div class="my-gallery d-flex flex-wrap mt-4 pt-2" id="galleryHouse">
+                                
+                            </div>
+                            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                <!-- Background of PhotoSwipe.It's a separate element, as animating opacity is faster than rgba(). -->
+                                <div class="pswp__bg"></div>
+                                <!-- Slides wrapper with overflow:hidden. -->
+                                <div class="pswp__scroll-wrap">
+                                    <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                                    <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                                    <div class="pswp__container">
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                    </div>
+                                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                        <div class="pswp__top-bar">
+                                            <!--  Controls are self-explanatory. Order can be changed. -->
+                                            <div class="pswp__counter"></div>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--close">Close
+                                                (Esc)
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--fs">
+                                                Fullscreen
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--left">
+                                                Prev
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--right">
+                                                Next
+                                            </button>
+                                            <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                                            <div class="pswp__preloader">
+                                                <div class="pswp__preloader__icn">
+                                                    <div class="pswp__preloader__cut">
+                                                        <div class="pswp__preloader__donut"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                            <div class="pswp__share-tooltip"></div>
+                                        </div>
+                                        <div class="pswp__caption">
+                                            <div class="pswp__caption__center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            <form method="post" id="fotos_do_imovel" data-form-url="{% url 'fotos_do_imovel_form' %}">
+                                {% csrf_token %}
+                                <div class="container border rounded p-3 mb-4">
+                                    <h5 class="font-weight-bolder mb-4">Informações</h5>
+                                    <div class="row mt-4">
+                                        <div class="col-12 col-sm-6">
+                                            <div class="input-group input-group-dynamic">
+                                                <label for="precoVenda" class="form-label">Preço de Venda</label>
+                                                <input type="number" class="form-control w-100" id="precoVenda" onfocus="focused(this)" onfocusout="defocused(this)" step="any">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                            <select class="form-control" name="choices-sizes" id="currency-venda">
+                                                <option value="USD" selected="">USD</option>
+                                                <option value="EUR">EUR</option>
+                                                <option value="GBP">GBP</option>
+                                                <option value="CNY">CNY</option>
+                                                <option value="INR">INR</option>
+                                                <option value="BTC">BTC</option>
+                                                <option value="BRL">BRL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12 col-sm-6">
+                                            <div class="input-group input-group-dynamic">
+                                                <label for="precoAluguel" class="form-label">Preço de Aluguel</label>
+                                                <input type="number" class="form-control w-100" id="precoAluguel"
+                                                       onfocus="focused(this)" onfocusout="defocused(this)" step="any">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                            <select class="form-control" name="choices-sizes" id="currency-aluguel">
+                                                <option value="USD" selected="">USD</option>
+                                                <option value="EUR">EUR</option>
+                                                <option value="GBP">GBP</option>
+                                                <option value="CNY">CNY</option>
+                                                <option value="INR">INR</option>
+                                                <option value="BTC">BTC</option>
+                                                <option value="BRL">BRL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Seleção de Tags para Espaço Residencial -->
+                                    <div class="row mt-4">
+                                        <div class="col-12 col-sm-6">
+                                            <label class="mt-2 ms-0 form-label">Categoria</label>
+                                            <select class="form-control" name="choices-house" id="house">
+                                                <option value="Mansão">Mansão</option>
+                                                <option value="Chalé">Chalé</option>
+                                                <option value="Casa">Casa</option>
+                                                <option value="Garden">Garden</option>
+                                                <option value="Loft">Loft</option>
+                                                <option value="Flat">Flat</option>
+                                                <option value="Kitnet">Kitnet</option>
+                                                <option value="Casa Geminada">Casa Geminada</option>
+                                                <option value="Apartamento">Apartamento</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                            <label for="tags-comodos-edit" class="mt-2 form-label">Cômodos
+                                                (Selecionar)</label>
+                                            <select class="form-control" name="choices-tags" id="tags-comodos-edit"
+                                                    multiple>
+                                                <option value="Sala de Estar">Sala de Estar</option>
+                                                <option value="Cozinha">Cozinha</option>
+                                                <option value="Quarto">Quarto</option>
+                                                <option value="Suíte">Suíte</option>
+                                                <option value="Armário">Armário</option>
+                                                <option value="Banheiro">Banheiro</option>
+                                                <option value="Sala de jantar">Sala de jantar</option>
+                                                <option value="Sala de jogos">Sala de jogos</option>
+                                                <option value="Cinema">Cinema</option>
+                                                <option value="Sala de Ginástica">Sala de Ginástica</option>
+                                                <option value="Salão de festas">Salão de festas</option>
+                                                <option value="Lavanderia">Lavanderia</option>
+                                                <option value="Garagem">Garagem</option>
+                                                <option value="Quintal">Quintal</option>
+                                                <option value="Piscina">Piscina</option>
+                                                <option value="Sauna">Sauna</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-lg-2">
+                                    <div class="col-sm-12 mb-4">
+                                        <div id="description-house-edit" class="h-100">
+                                            Descrição opcional.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none py-4"></div>
+                                <div class="row mb-2">
+                                    <div class="col-sm-12 mt-4" for="image_house">
+                                        <a class="form-control border p-5 text-center" id="dropzone-house">
+                                            <div class="dz-message">
+                                                <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                                <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">
+                                        Confirmar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

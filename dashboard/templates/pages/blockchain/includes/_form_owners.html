@@ -1,0 +1,134 @@
+<div class="modal fade" id="ModalPropriet" tabindex="-1" aria-labelledby="ModalProprietLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalProprietLabel">Dados do Propirtário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="mainPropriet" data-form-url="{% url 'localizacao_geografica_form' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="nome" class="form-label">NOME</label>
+                        <input type="text" id="nome" class="form-control w-100" name="nome" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="rg" class="form-label">RG</label>
+                        <input type="number" id="rg" class="form-control w-100" name="rg" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="number" id="cpf" class="form-control w-100" name="cpf" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateNascimento" class="col-form-label ms-0">DATA DE NASCIMENTO</label>
+                        <input type="date" class="form-control w-100" id="dateNascimento">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="nascionalidade" class="form-label">NASCIONALIDADE</label>
+                        <input type="text" id="nascionalidade" class="form-control w-100" name="nascionalidade" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="estadoCivil" class="form-label">ESTADO CIVIL</label>
+                        <input type="text" id="estadoCivil" class="form-control w-100" name="estadoCivil" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group-dynamic mt-4">
+                        <label class="form-label" for="profile-image">Foto de Perfil</label>
+                        <div action="/file-upload" class="form-control border p-5 text-center" id="dropzoneProfileImage">
+                            <div class="dz-message">
+                                <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                <span class="d-block mt-2">Clique aqui para fazer o upload.</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="material.showSwal('success-message')" data-bs-dismiss="modal">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalSecondaryPropriet" tabindex="-1" aria-labelledby="ModalProprietLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalProprietLabel">Dados do Propirtário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="secondaryPropriet">
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="nome" class="form-label">NOME</label>
+                        <input type="text" id="nome" class="form-control w-100" name="nome" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="rg" class="form-label">RG</label>
+                        <input type="number" id="rg" class="form-control w-100" name="rg" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="number" id="cpf" class="form-control w-100" name="cpf" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateNascimento" class="col-form-label ms-0">DATA DE NASCIMENTO</label>
+                        <input type="date" class="form-control w-100" id="dateNascimento">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="nascionalidade" class="form-label">NASCIONALIDADE</label>
+                        <input type="text" id="nascionalidade" class="form-control w-100" name="nascionalidade" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group input-group-dynamic mt-3">
+                        <label for="estadoCivil" class="form-label">ESTADO CIVIL</label>
+                        <input type="text" id="estadoCivil" class="form-control w-100" name="estadoCivil" onfocus="focused(this)" onfocusout="defocused(this)">
+                    </div>
+                    <div class="input-group-dynamic mt-4">
+                        <label class="form-label" for="profile-image">Foto de Perfil</label>
+                        <div action="/file-upload" class="form-control border p-5 text-center" id="dropzoneProfileImageSecondary">
+                            <div class="dz-message">
+                                <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                <span class="d-block mt-2">Clique aqui para fazer o upload.</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="material.showSwal('success-message')" data-bs-dismiss="modal">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for herdeiro in herdeiros %}
+    <div class="modal fade" id="Modal{{ herdeiro }}" tabindex="-1" aria-labelledby="ModalProprietLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalProprietLabel">Dados do Herdeiro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="herdeiro{{ herdeiro }}">
+                        <div class="input-group input-group-dynamic mt-3">
+                            <label for="nome" class="form-label">NOME</label>
+                            <input type="text" id="nome" class="form-control w-100" name="nome" onfocus="focused(this)" onfocusout="defocused(this)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateNascimento" class="col-form-label ms-0">DATA DE NASCIMENTO</label>
+                            <input type="date" class="form-control w-100" id="dateNascimento">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="material.showSwal('success-message')" data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

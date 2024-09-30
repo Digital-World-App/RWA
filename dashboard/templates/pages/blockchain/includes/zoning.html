@@ -1,0 +1,135 @@
+{% load static %}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">Plano de Zoneamento</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input name="file" type="file" multiple class="d-none" id="zoning-input">
+                            <div class="col-12 d-flex justify-content-center py-4" id="zoning-content">
+                                <img class="w-100 border-radius-lg shadow-lg mx-auto"
+                                     src="{% static 'assets/img/blockchain/escritura/zoneamento/zoneamento.jpg' %}"
+                                     alt="chair">
+                            </div>
+                            <div class="my-gallery d-flex flex-wrap mt-4 pt-2" id="galleryZoning">
+                                
+                            </div>
+                            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                <!-- Background of PhotoSwipe.It's a separate element, as animating opacity is faster than rgba(). -->
+                                <div class="pswp__bg"></div>
+                                <!-- Slides wrapper with overflow:hidden. -->
+                                <div class="pswp__scroll-wrap">
+                                    <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+                                    <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+                                    <div class="pswp__container">
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                        <div class="pswp__item"></div>
+                                    </div>
+                                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                                    <div class="pswp__ui pswp__ui--hidden">
+                                        <div class="pswp__top-bar">
+                                            <!--  Controls are self-explanatory. Order can be changed. -->
+                                            <div class="pswp__counter"></div>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--close">Close
+                                                (Esc)
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--fs">
+                                                Fullscreen
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--left">
+                                                Prev
+                                            </button>
+                                            <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--right">
+                                                Next
+                                            </button>
+                                            <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                                            <div class="pswp__preloader">
+                                                <div class="pswp__preloader__icn">
+                                                    <div class="pswp__preloader__cut">
+                                                        <div class="pswp__preloader__donut"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                            <div class="pswp__share-tooltip"></div>
+                                        </div>
+                                        <div class="pswp__caption">
+                                            <div class="pswp__caption__center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            <form method="post" id="plano_de_zoneamento"
+                                  data-form-url="{% url 'plano_de_zoneamento_form' %}">
+                                {% csrf_token %}
+                                <div class="container border rounded p-3 mb-4">
+                                    <h5 class="font-weight-bolder mb-4">Informações</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="mt-4 ms-0">Zoneamento</label>
+                                            <select class="form-control" name="choices-zoning" id="zoning">
+                                                <option value="Choice 1" selected="">Zona Residencial (ZR1)</option>
+                                                <option value="Choice 2">Zona Residencial (ZR2)</option>
+                                                <option value="Choice 3">Zona Residencial (ZR3)</option>
+                                                <option value="Choice 4">Zona Residencial Especial (ZRE)</option>
+                                                <option value="Choice 5">Zona Comercial (ZC1)</option>
+                                                <option value="Choice 6">Zona Comercial (ZC2)</option>
+                                                <option value="Choice 7">Zona Comercial (ZC3)</option>
+                                                <option value="Choice 8">Zona Comercial Especial (ZCE)</option>
+                                                <option value="Choice 9">Zona Industrial (ZI1)</option>
+                                                <option value="Choice 10">Zona Industrial (ZI2)</option>
+                                                <option value="Choice 11">Zona Industrial (ZI3)</option>
+                                                <option value="Choice 12">Zona Industrial Especial (ZIE)</option>
+                                                <option value="Choice 13">Zona de Preservação Ambiental (ZPA)</option>
+                                                <option value="Choice 14">Zona de Proteção Ambiental (ZPR)</option>
+                                                <option value="Choice 15">Zona de Recuperação Ambiental (ZRA)</option>
+                                                <option value="Choice 16">Zona Rural (ZR)</option>
+                                                <option value="Choice 17">Zona Agrícola (ZA)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-lg-2">
+                                    <div class="col-sm-12 mb-4">
+                                        <div id="description-zoning-edit" class="h-100">
+                                            Descrição opcional.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none py-4"></div>
+                                <div class="row mb-2">
+                                    <div class="col-sm-12 mt-4">
+                                        <a class="form-control border p-5 text-center" id="dropzone-zoning">
+                                            <div class="dz-message">
+                                                <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                                <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="button" name="button" class="btn btn-outline-dark btn-sm mb-2 me-2">
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" name="button" class="btn bg-gradient-primary btn-sm mb-2">
+                                        Confirmar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

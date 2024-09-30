@@ -1,0 +1,251 @@
+{% load static %}
+<!-- City hall -->
+   <div class="container-fluid py-4">
+      <div class="row">
+         <div class="col-sm-6 mb-5 mb-sm-0">
+            <section class="card h-100">
+               <form method="post" id="prefeitura" data-form-url="{% url 'prefeitura_form' %}">
+                  {% csrf_token %}
+                  <header class="card-header pb-0 p-3">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h6 class="mb-0">Prefeitura</h6>
+                        </div>
+                     </div>
+                  </header>
+                  <article class="card-body pt-3">
+                     <div class="container border rounded p-3">
+                        <!-- Address Section -->
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <fieldset>
+                                 <div class="input-group input-group-dynamic">
+                                    <label for="addressCountry" class="form-label">País</label>
+                                    <input type="text" id="addressCountry" class="form-control w-100" aria-describedby="addressCountryHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                                 </div>
+                              </fieldset>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <select class="form-control" name="addressStates" id="addressStates">
+                                 <option value="" disabled selected hidden>Estados</option>
+                                 <option value="AC">Acre</option>
+                                 <option value="AL">Alagoas</option>
+                                 <option value="AP">Amapá</option>
+                                 <option value="AM">Amazonas</option>
+                                 <option value="BA">Bahia</option>
+                                 <option value="CE">Ceará</option>
+                                 <option value="DF">Distrito Federal</option>
+                                 <option value="ES">Espírito Santo</option>
+                                 <option value="GO">Goiás</option>
+                                 <option value="MA">Maranhão</option>
+                                 <option value="MT">Mato Grosso</option>
+                                 <option value="MS">Mato Grosso do Sul</option>
+                                 <option value="MG">Minas Gerais</option>
+                                 <option value="PA">Pará</option>
+                                 <option value="PB">Paraíba</option>
+                                 <option value="PR">Paraná</option>
+                                 <option value="PE">Pernambuco</option>
+                                 <option value="PI">Piauí</option>
+                                 <option value="RJ">Rio de Janeiro</option>
+                                 <option value="RN">Rio Grande do Norte</option>
+                                 <option value="RS">Rio Grande do Sul</option>
+                                 <option value="RO">Rondônia</option>
+                                 <option value="RR">Roraima</option>
+                                 <option value="SC">Santa Catarina</option>
+                                 <option value="SP">São Paulo</option>
+                                 <option value="SE">Sergipe</option>
+                                 <option value="TO">Tocantins</option>
+                              </select>
+                           </div>
+                        </div>
+                        <!-- Municipality and Neighborhood Section -->
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="municipality" class="form-label">Município</label>
+                                 <input type="text" id="municipality" class="form-control w-100" aria-describedby="municipalityHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="neighborhood" class="form-label">Bairro</label>
+                                 <input type="text" id="neighborhood" class="form-control w-100" aria-describedby="neighborhoodHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Street, Block, and Lot Section -->
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="street" class="form-label">Rua</label>
+                                 <input type="text" id="street" class="form-control w-100" aria-describedby="streetHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="block" class="form-label">Quadra</label>
+                                 <input type="text" id="block" class="form-control w-100" aria-describedby="blockHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="lot" class="form-label">Lote</label>
+                                 <input type="text" id="lot" class="form-control w-100" aria-describedby="lotHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- IPTU Registration Section -->
+                        <div class="row mt-4">
+                           <div class="col-8">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="iptuRegistration" class="form-label">Nº Registro IPTU</label>
+                                 <input type="number" id="iptuRegistration" class="form-control w-100" aria-describedby="iptuRegistrationHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- IPTU Document Section -->
+                        <div class="input-group-dynamic mt-4">
+                           <label class="form-label">Comprovante de IPTU</label>
+                           <div action="/file-upload" class="form-control border dropzone text-center" id="dropzoneIptu">
+                              <div class="fallback">
+                                 <input name="file" type="file" multiple />
+                              </div>
+                              <div class="dz-message">
+                                 <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                 <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-end mt-4">
+                        <button type="button" name="cancelButton" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                        <button type="submit" name="confirmButton" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                     </div>
+                  </article>
+               </form>
+            </section>
+         </div>
+         <!-- Notary's Office -->
+         <div class="col-sm-6">
+            <form method="post" id="oficio_notarial" data-form-url="{% url 'oficio_notarial_form' %}">
+               {% csrf_token %}
+               <div class="card h-100">
+                  <div class="card-header pb-0 p-3">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h6 class="mb-0">Ofício Notarial</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card-body pt-3">
+                     <div class="container border rounded p-3">
+                        <!-- Address Section -->
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialCountry" class="form-label">País</label>
+                                 <input type="text" id="notarialCountry" class="form-control w-100" aria-describedby="notarialCountryHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <select class="form-control" name="notarialStates" id="notarialStates">
+                                 <option value="" disabled selected hidden>Estados</option>
+                                 <option value="AC">Acre</option>
+                                 <option value="AL">Alagoas</option>
+                                 <option value="AP">Amapá</option>
+                                 <option value="AM">Amazonas</option>
+                                 <option value="BA">Bahia</option>
+                                 <option value="CE">Ceará</option>
+                                 <option value="DF">Distrito Federal</option>
+                                 <option value="ES">Espírito Santo</option>
+                                 <option value="GO">Goiás</option>
+                                 <option value="MA">Maranhão</option>
+                                 <option value="MT">Mato Grosso</option>
+                                 <option value="MS">Mato Grosso do Sul</option>
+                                 <option value="MG">Minas Gerais</option>
+                                 <option value="PA">Pará</option>
+                                 <option value="PB">Paraíba</option>
+                                 <option value="PR">Paraná</option>
+                                 <option value="PE">Pernambuco</option>
+                                 <option value="PI">Piauí</option>
+                                 <option value="RJ">Rio de Janeiro</option>
+                                 <option value="RN">Rio Grande do Norte</option>
+                                 <option value="RS">Rio Grande do Sul</option>
+                                 <option value="RO">Rondônia</option>
+                                 <option value="RR">Roraima</option>
+                                 <option value="SC">Santa Catarina</option>
+                                 <option value="SP">São Paulo</option>
+                                 <option value="SE">Sergipe</option>
+                                 <option value="TO">Tocantins</option>
+                              </select>
+                           </div>
+                        </div>
+                        <!-- Municipality and Neighborhood Section -->
+                        <div class="row mt-4">
+                           <div class="col-12 col-sm-6">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialMunicipality" class="form-label">Município</label>
+                                 <input type="text" id="notarialMunicipality" class="form-control w-100" aria-describedby="notarialMunicipalityHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialNeighborhood" class="form-label">Bairro</label>
+                                 <input type="text" id="notarialNeighborhood" class="form-control w-100" aria-describedby="notarialNeighborhoodHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Street, Block, and Lot Section -->
+                        <div class="row mt-4">
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialStreet" class="form-label">Rua</label>
+                                 <input type="text" id="notarialStreet" class="form-control w-100" aria-describedby="notarialStreetHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialBlock" class="form-label">Quadra</label>
+                                 <input type="text" id="notarialBlock" class="form-control w-100" aria-describedby="notarialBlockHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                           <div class="col-4">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialLot" class="form-label">Lote</label>
+                                 <input type="text" id="notarialLot" class="form-control w-100" aria-describedby="notarialLotHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Notarial Registration Section -->
+                        <div class="row mt-4">
+                           <div class="col-8">
+                              <div class="input-group input-group-dynamic">
+                                 <label for="notarialRegistration" class="form-label">Nº Registro Notarial</label>
+                                 <input type="number" id="notarialRegistration" class="form-control w-100" aria-describedby="notarialRegistrationHelp" onfocus="focused(this)" onfocusout="defocused(this)">
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Notarial Document Section -->
+                        <div class="input-group-dynamic mt-4">
+                           <label class="form-label">Certidão Notarial do Imóvel</label>
+                           <div action="/file-upload" class="form-control border dropzone text-center" id="dropzoneNotarial">
+                              <div class="fallback">
+                                 <input name="file" type="file" multiple />
+                              </div>
+                              <div class="dz-message">
+                                 <i class="material-icons" style="font-size: 48px;">cloud_upload</i>
+                                 <span class="d-block mt-2">Arraste e solte os arquivos aqui ou clique para fazer o upload.</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex justify-content-end mt-4">
+                        <button type="button" name="cancelNotarialButton" class="btn btn-outline-dark btn-sm mb-2 me-2">Cancelar</button>
+                        <button type="submit" name="confirmNotarialButton" class="btn bg-gradient-primary btn-sm mb-2">Confirmar</button>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>

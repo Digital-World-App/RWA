@@ -1,0 +1,186 @@
+{% load static %}
+<div class="d-none">
+   <div class="container-fluid pb-4 pt-2">
+      <div class="row mt-4">
+         <div class="col-12">
+            <div class="watch-slider">
+               <div class="card mt-4 slide" data-animation="true">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                     <a class="d-block blur-shadow-image">
+                     <img src="{% static 'assets/img/user/7.png' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                     </a>
+                     <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/7.png' %}&quot;);"></div>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="mt-n5 mt-sm-n5 mx-auto">
+                        <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#ModalPropriet" data-bs-whatever="@mdo">
+                           Edit
+                        </button>
+                        <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                     </div>
+                     <h5 class="font-weight-normal mt-4">
+                        Proprietário
+                     </h5>
+                     <p class="mb-0">
+                        Charles
+                     </p>
+                     <div class="collapse" id="collapseExample11_11">
+                        <!-- Your other collapsible content -->
+                     </div>
+                  </div>
+               </div>
+               <div class="card mt-4 slide" data-animation="true">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                     <a class="d-block blur-shadow-image">
+                     <img src="{% static 'assets/img/user/5.png' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                     </a>
+                     <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/5.png' %}&quot;);"></div>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="mt-n5 mt-sm-n5 mx-auto">
+                        <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#ModalSecondaryPropriet" data-bs-whatever="@mdo">
+                           Edit
+                        </button>
+                        <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                     </div>
+                     <h5 class="font-weight-normal mt-4">
+                        Proprietário
+                     </h5>
+                     <p class="mb-0">
+                        Helana
+                     </p>
+                     <div class="collapse" id="collapseExample9_11">
+                        <!-- Your other collapsible content -->
+                     </div>
+                  </div>
+               </div>
+               {% for herdeiro in herdeiros %}
+                  <div class="card mt-4 slide" data-animation="true">
+                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <a class="d-block blur-shadow-image">
+                        <img src="{% static 'assets/img/user/avatar.jpg' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                        </a>
+                        <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/avatar.jpg' %}&quot;);"></div>
+                     </div>
+                     <div class="card-body text-center">
+                        <div class="mt-n5 mt-sm-n5 mx-auto">
+                           <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#Modal{{ herdeiro }}" data-bs-whatever="@mdo">
+                              Edit
+                           </button>
+                           <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                        </div>
+                        <h5 class="font-weight-normal mt-4">
+                           Herdeiro
+                        </h5>
+                        <p class="mb-0">
+                           {{ herdeiro }}
+                        </p>
+                        <div class="collapse" id="collapseExample6_11">
+                           <!-- Your other collapsible content -->
+                        </div>
+                     </div>
+                  </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- For larger devices, display cards in a horizontal list -->
+<div class="">
+   <div class="container-fluid py-4">
+      <div class="row mt-4">
+         <div class="col-1 arrow-container" >
+            <div id="arrow-prev1" class="arrow"></div>
+         </div>
+         <div class="col-10">
+            <div class="watch-slider">
+               <div class="card mt-4 slide" data-animation="true">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                     <input class="d-none" type="file" name="imageProfileInput" id="imageProfileInput">
+                     <div class="d-block blur-shadow-image profileMainContent" id="profileMainContent">
+                        <img src="{% static 'assets/img/user/7.png' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                     </div>
+                     <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/7.png' %}&quot;);"></div>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="mt-n4 mt-sm-n5 mx-auto">
+                        <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#ModalPropriet" data-bs-whatever="@mdo">
+                           Edit
+                        </button>
+                        <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                     </div>
+                     <h5 class="font-weight-normal mt-4">
+                        Proprietário
+                     </h5>
+                     <p class="mb-0">
+                        Charles
+                     </p>
+                     <div class="collapse" id="collapseExample11_1">
+                        <!-- Your other collapsible content -->
+                     </div>
+                  </div>
+               </div>
+               <div class="card mt-4 slide" data-animation="true">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                     <input class="d-none" type="file" name="imageProfileSecondaryInput" id="imageProfileSecondaryInput">
+                     <div class="d-block blur-shadow-image profileSecondaryContent" id="profileSecondaryContent">
+                        <img src="{% static 'assets/img/user/5.png' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                     </div>
+                     <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/5.png' %}&quot;);"></div>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="mt-n4 mt-sm-n5 mx-auto">
+                        <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#ModalSecondaryPropriet" data-bs-whatever="@mdo">
+                           Edit
+                        </button>
+                        <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                     </div>
+                     <h5 class="font-weight-normal mt-4">
+                        Proprietário
+                     </h5>
+                     <p class="mb-0">
+                        Helana
+                     </p>
+                     <div class="collapse" id="collapseExample9_1">
+                        <!-- Your other collapsible content -->
+                     </div>
+                  </div>
+               </div>
+               {% for herdeiro in herdeiros %}
+                  <div class="card mt-4 slide" data-animation="true">
+                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <a class="d-block blur-shadow-image">
+                        <img src="{% static 'assets/img/user/avatar.jpg' %}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                        </a>
+                        <div class="colored-shadow" style="background-image: url(&quot;{% static 'assets/img/user/avatar.jpg' %}&quot;);"></div>
+                     </div>
+                     <div class="card-body text-center">
+                        <div class="mt-n4 mt-sm-n5 mx-auto">
+                           <button type="button" class="btn bg-gradient-primary btn-sm mb-0 me-2" data-bs-toggle="modal" data-bs-target="#Modal{{ herdeiro }}" data-bs-whatever="@mdo">
+                              Edit
+                           </button>
+                           <button class="btn btn-outline-dark btn-sm mb-0" type="button" name="button">Remove</button>
+                        </div>
+                        <h5 class="font-weight-normal mt-4">
+                           Herdeiro
+                        </h5>
+                        <p class="mb-0">
+                           {{ herdeiro }}
+                        </p>
+                        <div class="collapse" id="collapseExample6_1">
+                           <!-- Your other collapsible content -->
+                        </div>
+                     </div>
+                  </div>
+               {% endfor %}
+            </div>
+         </div>
+         <div class="col-1 arrow-container">
+            <div id="arrow-next1" class="arrow"></div>
+         </div>
+      </div>
+   </div>
+</div>
+
+{% include "pages/blockchain/includes/_form_owners.html" %}
