@@ -1,0 +1,569 @@
+{% extends 'layouts/base-fullscreen.html' %}
+
+{% load static %}
+
+{% block content %}  
+
+  <div class="container-fluid px-2 px-md-4">
+    <div class="card border-radius-xl mt-4" style="background-image: url('{% static 'assets/img/products/agro.png' %}'); background-size: cover; background-position: center; min-height: 300px;">
+      <div class="card-body text-white" style="border-radius: 12px;"> <!-- Removido o sombreamento -->
+          
+      </div>
+    </div>  
+  
+    <div class="card border-1 card-body mx-3 mx-md-4 mt-n6">
+      <div class="row gx-4">
+        <div class="col-auto">
+          <div class="avatar avatar-xl position-relative">
+            <img src="{% static 'assets/img/logos/AAPOP.png' %}" alt="logo" class="w-100 border-radius-lg shadow-sm">
+          </div>
+        </div>
+        <div class="col-auto my-auto">
+          <div class="h-100">
+            <h5 class="mb-1">
+              AAPOP
+            </h5>
+            <p class="mb-0 font-weight-normal text-sm">
+              Associação Agroecológica de Produtores Orgânicos de Paraty
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+          <div class="nav-wrapper position-relative end-0">
+            <ul class="nav nav-pills nav-fill p-1" role="tablist">              
+              <li class="nav-item">
+                <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                  <i class="material-icons text-lg position-relative">email</i>
+                  <span class="ms-1">Messages</span>
+                </a>
+              </li>              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+  
+  
+  <div class="container-fluid py-4">
+
+    <div class="row mt-4">
+      <div class="col-lg-8">
+        <div class="card h-100 border-1 bg-transparent position-relative" style="overflow: hidden; border-radius: 15px;">
+            <!-- Cabeçalho do cartão -->           
+    
+            <!-- Corpo do cartão com mapa como plano de fundo -->
+            <div class="card-body p-0 position-relative leaflet">
+                <!-- Mapa usando Mapbox GL JS como plano de fundo -->
+                <div id="mapid" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1; border-radius: 15px;"></div>
+            </div>
+    
+            <!-- Rodapé do cartão -->            
+        </div>
+      </div>
+    
+    
+    
+      <div class="col-lg-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="card bg-gradient-dark mb-4 mt-4 mt-lg-0">
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-8 my-auto">
+                    <div class="numbers">
+                      <h3 class="text-white mb-1">11:13</h3>
+                      <p class="text-white text-sm mb-0 text-capitalize font-weight-bold opacity-7">Wheather today</p>
+                      <h5 class="text-white font-weight-bolder mb-0">
+                        Paraty/RJ - 29°C
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="col-4 text-end">
+                    <img class="w-50" src="{% static 'assets/img/small-logos/icon-sun-cloud.png' %}" alt="image sun">
+                    <h5 class="mb-0 text-white text-end me-1">Cloudy</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-12 mt-2">
+            <div class="card border-1">
+                <div class="card-body p-3 pt-2">
+                    <!-- Ícone do card -->
+                    <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                        <i class="material-icons opacity-10" aria-hidden="true">home_work</i>
+                    </div>
+                    <!-- Conteúdo do card -->
+                    <div class="pt-4"> <!-- Adicionando padding-top para compensar o ícone absoluto -->
+                        <p class="text-sm mb-3 text-capitalize" style="text-align: right;">Informações do Imóvel</p>
+    
+        
+                        <!-- Rua -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="mb-1">Rua: <span class="font-weight-bold">Jango Pádua</span></h6>
+                            </div>
+                        </div>        
+                        <!-- Tipo de Imóvel -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="mb-1">Tipo de Imóvel: <span class="font-weight-bold">Urbano</span></h6>
+                            </div>
+                        </div>        
+                        <!-- Quadra, Lote e Número -->
+                        <div class="row">
+                            <div class="col-4">
+                                <h6 class="mb-1">Quadra: <span class="font-weight-bold">S/N</span></h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="mb-1">Lote: <span class="font-weight-bold">S/N</span></h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="mb-1">N°: <span class="font-weight-bold">08</span></h6>
+                            </div>
+                        </div>        
+                        <!-- Latitude e Longitude -->
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <h6 class="mb-1">Latitude: <span class="font-weight-bold">-23.22155</span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="mb-1">Longitude: <span class="font-weight-bold">-44.71992</span></h6>
+                            </div>
+                        </div>        
+                        <!-- Área e Valor -->
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <h6 class="mb-1">Área: <span class="font-weight-bold">S/N m²</span></h6>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="mb-1">Valor: <span class="font-weight-bold">R$ S/N</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>         
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card border-1">
+          <div class="card-body p-3 position-relative">
+            <div class="row">
+              <div class="col-7 text-start">
+                <p class="text-sm mb-1 text-capitalize font-weight-bold">Vendas</p>
+                <h5 class="font-weight-bolder mb-0">
+                  $100 K
+                </h5>
+                <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+55% <span class="font-weight-normal text-secondary"></span></span>
+              </div>
+              <div class="col-5">
+                <div class="dropdown text-end">
+                  <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="text-xs text-secondary">6 May - 7 May</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers1">
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-sm-0 mt-4">
+        <div class="card border-1">
+          <div class="card-body p-3 position-relative">
+            <div class="row">
+              <div class="col-7 text-start">
+                <p class="text-sm mb-1 text-capitalize font-weight-bold">Produção</p>
+                <h5 class="font-weight-bolder mb-0">
+                  3.200 T
+                </h5>
+                <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12% <span class="font-weight-normal text-secondary"></span></span>
+              </div>
+              <div class="col-5">
+                <div class="dropdown text-end">
+                  <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="text-xs text-secondary">6 May - 7 May</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers2">
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-sm-0 mt-4">
+        <div class="card border-1">
+          <div class="card-body p-3 position-relative">
+            <div class="row">
+              <div class="col-7 text-start">
+                <p class="text-sm mb-1 text-capitalize font-weight-bold">Receitas</p>
+                <h5 class="font-weight-bolder mb-0">
+                  $1.200 M
+                </h5>
+                <span class="font-weight-normal text-secondary text-sm"><span class="font-weight-bolder text-success">+$213</span></span>
+              </div>
+              <div class="col-5">
+                <div class="dropdown text-end">
+                  <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="text-xs text-secondary">6 May - 7 May</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUsers3">
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7 days</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a></li>
+                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30 days</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-3 col-sm-6">
+        <div class="card h-100 border-1 position-relative shadow-lg"> <!-- Use shadow-lg para uma sombra mais forte -->
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalhes do produto">
+                        <i class="material-icons text-sm">priority_high</i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body pb-0 p-1 mt-4 position-relative">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center py-1">
+                        <img src="{% static 'assets/img/products/20.png' %}" alt="Imagem de um tomate fresco" style="width: 100%; height: 400px; object-fit: cover;" class="rounded">
+                    </div>
+                    <!-- Título sobreposto -->
+                    <div class="card-body-header pb-0 p-3 position-absolute" style="top: 10px; left: 10px; z-index: 1;">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 text-white">Tomate</h6>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-end position-absolute bottom-0 start-0 w-100 bg-transparent">
+                  <div class="col-12 d-flex justify-content-center">
+                      <!-- Botão com valor a ser fornecido pela API -->
+                      <button type="button" class="btn btn-outline-light rounded shadow" style="opacity: 0.9;">
+                        R$ <span id="price">0,00</span>
+                    </button>
+                    
+                  </div>
+              </div>
+            </div>            
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="card h-100 border-1 position-relative shadow-lg"> <!-- Use shadow-lg para uma sombra mais forte -->
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalhes do produto">
+                        <i class="material-icons text-sm">priority_high</i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body pb-0 p-1 mt-4 position-relative">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center py-1">
+                        <img src="{% static 'assets/img/products/21.png' %}" alt="Imagem de um tomate fresco" style="width: 100%; height: 400px; object-fit: cover;" class="rounded">
+                    </div>
+                    <!-- Título sobreposto -->
+                    <div class="card-body-header pb-0 p-3 position-absolute" style="top: 10px; left: 10px; z-index: 1;">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 text-white">Pimentão</h6>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-end position-absolute bottom-0 start-0 w-100 bg-transparent">
+                  <div class="col-12 d-flex justify-content-center">
+                      <!-- Botão com valor a ser fornecido pela API -->
+                      <button type="button" class="btn btn-outline-light rounded shadow" style="opacity: 0.9;">
+                        R$ <span id="price">0,00</span>
+                    </button>
+                    
+                  </div>
+              </div>
+            </div>            
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="card h-100 border-1 position-relative shadow-lg"> <!-- Use shadow-lg para uma sombra mais forte -->
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalhes do produto">
+                        <i class="material-icons text-sm">priority_high</i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body pb-0 p-1 mt-4 position-relative">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center py-1">
+                        <img src="{% static 'assets/img/products/22.png' %}" alt="Imagem de um tomate fresco" style="width: 100%; height: 400px; object-fit: cover;" class="rounded">
+                    </div>
+                    <!-- Título sobreposto -->
+                    <div class="card-body-header pb-0 p-3 position-absolute" style="top: 10px; left: 10px; z-index: 1;">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 text-white">Limão</h6>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-end position-absolute bottom-0 start-0 w-100 bg-transparent">
+                  <div class="col-12 d-flex justify-content-center">
+                      <!-- Botão com valor a ser fornecido pela API -->
+                      <button type="button" class="btn btn-outline-light rounded shadow" style="opacity: 0.9;">
+                        R$ <span id="price">0,00</span>
+                    </button>
+                    
+                  </div>
+              </div>
+            </div>            
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="card h-100 border-1 position-relative shadow-lg"> <!-- Use shadow-lg para uma sombra mais forte -->
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver detalhes do produto">
+                        <i class="material-icons text-sm">priority_high</i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body pb-0 p-1 mt-4 position-relative">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center py-1">
+                        <img src="{% static 'assets/img/products/23.png' %}" alt="Imagem de um tomate fresco" style="width: 100%; height: 400px; object-fit: cover;" class="rounded">
+                    </div>
+                    <!-- Título sobreposto -->
+                    <div class="card-body-header pb-0 p-3 position-absolute" style="top: 10px; left: 10px; z-index: 1;">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 text-white">Milho</h6>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-end position-absolute bottom-0 start-0 w-100 bg-transparent">
+                    <div class="col-12 d-flex justify-content-center">
+                        <!-- Botão com valor a ser fornecido pela API -->
+                        <button type="button" class="btn btn-outline-light rounded shadow" style="opacity: 0.9;">
+                          R$ <span id="price">0,00</span>
+                      </button>
+                      
+                    </div>
+                </div>
+            </div>            
+        </div>
+      </div>        
+    </div>  
+  </div>
+      
+
+{% endblock content %}
+
+{% block footer %}
+
+  {% include 'includes/footer-fullscreen.html' %}
+
+{% endblock footer %}
+
+
+{% block extra_js %}
+
+  <script src="{% static 'assets/js/plugins/parallax.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/leaflet.js' %}"></script>
+  <script src="{% static 'assets/js/plugins/nouislider.min.js' %}"></script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.onscroll = debounce(function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var oVal = (window.scrollY / 3);
+        bgParallax.style.transform = 'translate3d(0,' + oVal + 'px,0)';
+      }, 6);
+    }
+  </script>
+  
+    <!-- Importando estilos e bibliotecas do Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+
+  <!-- Estilos personalizados -->
+  <style>
+    /* Estilo para o marcador */
+    .marker {
+      background-image: url('/static/assets/img/logos/CultivaAgro.png');
+      background-size: cover;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid white;
+    }
+
+    /* Estilo para o conteúdo do popup */
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .popup-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .popup-content img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Estilo para o popup do Mapbox */
+    .mapboxgl-popup {
+      max-width: 300px;
+      width: auto;
+    }
+
+    .mapboxgl-popup-content {
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      background-color: rgba(30, 30, 30, 0.3);
+      backdrop-filter: blur(3px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background-clip: padding-box;
+    }
+
+    .popup-content h3 {
+      margin: 0;
+      font-size: 16px;
+      color: white;
+    }
+
+    .popup-content p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+
+  <!-- Script para inicializar o mapa e adicionar marcadores -->
+  <script>
+    // Token do Mapbox
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHJvYWFhIiwiYSI6ImNtMTgyMDIxMTA2dGkybHEybmt0Z3JhZXYifQ.yiy5Vf1xtAmHfGdTdUoiNg';
+
+    // Inicialização do mapa
+    var map = new mapboxgl.Map({
+      container: 'mapid',  // ID da div onde o mapa será renderizado
+      style: 'mapbox://styles/sandroaaa/cm182mp2e00kv01pc68v25dgh',  // Estilo do mapa
+      center: [-60, -15],  // Coordenadas da América do Sul
+      zoom: 1.5,  // Nível de zoom inicial
+      projection: 'globe'  // Projeção 3D em globo
+    });
+
+    // Ajuste de estilo para projeção em globo
+    map.on('style.load', () => {
+      map.setFog({});  // Adiciona névoa opcional para visual realista
+    });
+
+    // Lista de pontos georreferenciados (passados pelo Django)
+    var geoPoints = {{ geo_points|safe }};
+
+    // Variável para timeout do popup
+    let popupTimeout;
+
+    // Itera sobre os pontos e adiciona marcadores no mapa
+    geoPoints.forEach(function(point) {
+      // Criação do marcador
+      var el = document.createElement('div');
+      el.className = 'marker';
+
+      // Criação do conteúdo do popup
+      var popupContent = `
+        <div class="popup-content" id="popup-${point.id}">
+          <img src="${point.image}" alt="${point.name}">
+          <h3>${point.name}</h3>
+        </div>
+      `;
+
+      // Criação do popup
+      var popup = new mapboxgl.Popup({
+        offset: 25,
+        closeButton: false,
+        closeOnClick: false
+      }).setHTML(popupContent);
+
+      // Adiciona o marcador ao mapa
+      var marker = new mapboxgl.Marker(el)
+        .setLngLat([point.lng, point.lat])
+        .addTo(map);
+
+      // Função para exibir o popup ao passar o mouse sobre o marcador
+      const showPopup = () => {
+        clearTimeout(popupTimeout);  // Cancela o fechamento do popup se o mouse estiver sobre ele
+        popup.setLngLat([point.lng, point.lat]).addTo(map);  // Mostra o popup
+        map.flyTo({ center: [point.lng, point.lat], zoom: 5 });  // Centraliza o mapa no ponto
+      };
+
+      // Função para esconder o popup após atraso de 3 segundos
+      const hidePopup = () => {
+        popupTimeout = setTimeout(() => {
+          popup.remove();
+        }, 3000);
+      };
+
+      // Eventos para exibir e ocultar o popup ao passar o mouse
+      el.addEventListener('mouseenter', showPopup);
+      el.addEventListener('mouseleave', hidePopup);
+
+      // Cancelar o fechamento do popup se o mouse estiver sobre ele
+      document.addEventListener('mouseover', function (e) {
+        const popupElement = document.querySelector(`#popup-${point.id}`);
+        if (popupElement && popupElement.contains(e.target)) {
+          clearTimeout(popupTimeout);
+        }
+      });
+
+      // Fechar o popup quando o mouse sair completamente
+      document.addEventListener('mouseout', function (e) {
+        const popupElement = document.querySelector(`#popup-${point.id}`);
+        if (popupElement && !popupElement.contains(e.relatedTarget)) {
+          hidePopup();
+        }
+      });
+    });
+  </script>
+
+      
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+{% endblock extra_js %}

@@ -29,7 +29,8 @@ urlpatterns = [
     path('blockchain/defi/', views.defi, name="defi"),
     path('blockchain/token/', views.token, name="token"),
     path('blockchain/storage/', views.storage, name="storage"),
-    path('blockchain/marketplace/', views.marketplace, name="marketplace"), 
+    path('blockchain/marketplace/', views.marketplace, name="marketplace"),
+    path('blockchain/emporium/', views.emporium, name="emporium"), 
 
 
     # Authentication -> Login

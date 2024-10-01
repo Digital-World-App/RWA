@@ -28,6 +28,22 @@
                 <i class="material-icons opacity-6 me-2 text-md">shopping_cart</i>
                 Orders
               </div>
+              <div class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0">
+                <i class="material-icons opacity-6 me-2 text-md">view_in_ar</i>
+                Serviços Web3
+            </div>                       
+              <a href="{% url 'nft' %}" class="dropdown-item border-radius-md">
+                  <span class="ps-2">Criar NFT</span>
+              </a>
+              <a href="{% url 'token' %}" class="dropdown-item border-radius-md">
+                  <span class="ps-2">Criar Token</span>
+              </a>
+              <a href="{% url 'registration' %}" class="dropdown-item border-radius-md">
+                  <span class="ps-2">Registro RWA</span>
+              </a>
+              <a href="{% url 'storage' %}" class="dropdown-item border-radius-md">
+                  <span class="ps-2">IPFS Storage</span>
+              </a>
               <!-- responsive -->
               <div class="row d-lg-none">
                 <div class="col-md-12">

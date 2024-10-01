@@ -1,0 +1,222 @@
+{% load static %}
+          
+        
+    <div class="row mt-4">        
+        <div class="col-lg-6 col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-gradient-info mb-4 mt-4 mt-lg-0">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8 my-auto">
+                                    <div class="numbers">
+                                        <p class="text-white text-sm mb-0 text-capitalize font-weight-bold opacity-7">Painel de Controle do Criador</p>
+                                        <h5 class="text-white font-weight-bolder mb-0">
+                                            Estes dados são atualizados em tempo real.
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <img class="w-75" src="{% static 'assets/img/small-logos/social.png' %}" alt="image sun">
+                                    <h5 class="mb-0 text-white text-end me-1">Rede Social</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if seguidores %}
+                <div class="col-lg-6 col-md-12 col-12 mt-2">
+                    <div class="card">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-info shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    group
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">SG</p>
+                                <h4 class="mb-0">{{ seguidores }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Seguidores</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if visualizacoes %}
+                <div class="col-lg-6 col-md-12 col-12 mt-4 mt-lg-2">
+                    <div class="card">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-info shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    visibility
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">VV</p>
+                                <h4 class="mb-0">{{ visualizacoes }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Visualizações</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if publicacoes %}
+                <div class="col-lg-6 col-md-6 col-12 mt-4 d-none d-lg-block">
+                    <div class="card mt-2">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-info shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    auto_stories
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">PUB</p>
+                                <h4 class="mb-0">{{ publicacoes }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Publicações</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if curtidas %}
+                <div class="col-lg-6 col-md-6 col-12 mt-4 d-none d-lg-block">
+                    <div class="card mt-2">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-info shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    thumb_up
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">CL</p>
+                                <h4 class="mb-0">{{ curtidas }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Curtidas</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>        
+        <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-gradient-dark mb-4 mt-4 mt-lg-0">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8 my-auto">
+                                    <div class="numbers">
+                                        <p class="text-white text-sm mb-0 text-capitalize font-weight-bold opacity-7">Painel de Controle do Criador</p>
+                                        <h5 class="text-white font-weight-bolder mb-0">
+                                            Estatísticas e métricas em tempo real.
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <img class="w-75" src="{% static 'assets/img/small-logos/analise.png' %}" alt="image analise">
+                                    <h5 class="mb-0 text-white text-end me-1">Análise</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if ctr %}
+                <div class="col-lg-6 col-md-12 col-12 mt-2">
+                    <div class="card">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    ads_click
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">CTR</p>
+                                <h4 class="mb-0">{{ ctr }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Taxa de cliques</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if volume_trafego %}
+                <div class="col-lg-6 col-md-12 col-12 mt-4 mt-lg-2">
+                    <div class="card">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    swap_vert
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">VT</p>
+                                <h4 class="mb-0">{{ volume_trafego }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Volume Tráfego</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if taxa_conversao %}
+                <div class="col-lg-6 col-md-6 col-12 mt-4 d-none d-lg-block">
+                    <div class="card mt-2">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    shopping_cart_checkout
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">CVR</p>
+                                <h4 class="mb-0">{{ taxa_conversao }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Taxa de Conversão</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if taxa_engajamento %}
+                <div class="col-lg-6 col-md-6 col-12 mt-4 d-none d-lg-block">
+                    <div class="card mt-2">
+                        <div class="card-header p-3 py-2">
+                            <div class="icon icon-lg icon-shape bg-gradient-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                <i class="material-icons text-white opacity-10">
+                                    co_present
+                                </i>
+                            </div>
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">ER%</p>
+                                <h4 class="mb-0">{{ taxa_engajamento }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+00% </span>Taxa de Engajamento</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>           
+    </div>
+    

@@ -107,6 +107,25 @@ def storage(request):
 	}
 	return render(request, 'pages/blockchain/storage.html', context)
 
+def emporium(request):
+
+	geo_points = [
+        
+        {
+            "lat": -23.22155,
+            "lng": -44.71992,
+            "name": "Paraty/RJ",            
+            "image": "https://i.postimg.cc/7PcgqgTq/Paraty.png"
+        }        
+    ]
+
+	context = {
+		'parent': 'blockchain',
+		'segment': 'emporium',
+		'geo_points': geo_points
+	}
+	return render(request, 'pages/blockchain/emporium.html', context)
+
 
 # Authentication -> Login
 class BasicLoginView(LoginView):
