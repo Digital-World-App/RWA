@@ -42,80 +42,240 @@
 {% endblock content %}
 
 {% block extra_js %}
+
+    <!-- Mapbox GL CSS e JS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    
+    <style>
+        /* Estilo para o marcador */
+        .marker {
+          background-image: url('/static/assets/img/logos/CultivaAgro.png'); /* Caminho relativo ao diretório do servidor */
+          background-size: cover;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid white;
+        }
+    
+        /* Estilo para o popup */
+        .popup-content {
+          display: flex;
+          flex-direction: column; /* Coloca a imagem e o texto em uma coluna */
+          align-items: center; /* Centraliza o conteúdo horizontalmente */
+          justify-content: center; /* Centraliza o conteúdo verticalmente */
+          text-align: center; /* Centraliza o texto no popup */
+          padding: 5px; /* Afastamento interno reduzido */
+        }
+    
+        .popup-content img {
+          width: 100%; /* Adapta a imagem ao tamanho do popup */
+          height: auto; /* Mantém a proporção da imagem */
+          border-radius: 12px; /* Bordas arredondadas */
+          margin-bottom: 5px; /* Espaçamento entre a imagem e o texto */
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+          object-fit: cover; /* Preenche o espaço da imagem sem distorção */
+          transition: transform 0.3s ease; /* Animação suave no hover */
+        }
+    
+        .popup-content img:hover {
+          transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+        }
+    
+        .mapboxgl-popup {
+          max-width: 300px; /* Limita o tamanho máximo do popup */
+          width: auto; /* Garante que o popup se ajuste ao conteúdo */
+        }
+    
+        .mapboxgl-popup-content {
+          border-radius: 12px; /* Bordas arredondadas no popup */
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra mais forte para o efeito fumê */
+          padding: 10px;
+          background-color: rgba(30, 30, 30, 0.3); /* Cor mais escura com 30% de opacidade para o efeito fumê */
+          backdrop-filter: blur(3px) saturate(120%); /* Reduz o desfoque para 3px para permitir ver 50% da imagem */
+          border: 1px solid rgba(255, 255, 255, 0.3); /* Borda mais leve para o efeito cristalizado */
+          background-clip: padding-box; /* Faz com que o efeito de vidro afete somente o conteúdo */
+        }
+    
+        .popup-content h3 {
+          margin: 0; /* Remove margens do título */
+          font-size: 16px; /* Tamanho da fonte do título */
+          color: white; /* Texto em branco para contraste com o fundo fumê */
+        }
+    
+        .popup-content p {
+          font-size: 14px; /* Tamanho da fonte da descrição */
+          color: rgba(255, 255, 255, 0.8); /* Texto com 80% de opacidade */
+        }
+    </style>
+    
     <script>
-    function showImageByZone(zoneOfClick, imageContainerSelector, inputId, classImage, classImageList) {
-        document.getElementById(zoneOfClick).addEventListener('click', function() {
-            let imageContainers = document.querySelectorAll(imageContainerSelector);
-            
-            let image = imageContainers[0].querySelectorAll(classImage);
-            if (image.length > 0) {
-                document.getElementById(inputId).click();
-            }
+        // Token do Mapbox
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuZHJvYWFhIiwiYSI6ImNtMTgyMDIxMTA2dGkybHEybmt0Z3JhZXYifQ.yiy5Vf1xtAmHfGdTdUoiNg';
+      
+        // Inicialização do Mapbox        
+        var map = new mapboxgl.Map({
+          container: 'mapid',  // ID da div onde o mapa será renderizado
+          style: 'mapbox://styles/sandroaaa/cm182mp2e00kv01pc68v25dgh',  // Estilo do mapa
+          center: [-60, -15],  // Coordenadas da América do Sul para focar na região desejada
+          zoom: 1.5,  // Nível de zoom ajustado para uma boa visão da América Latina
+          projection: 'globe'  // Projeção do globo (3D)
         });
-
-        document.getElementById(inputId).addEventListener('change', function(event) {
-            let file = event.target.files[0];
-            let imageContainers = document.querySelectorAll(imageContainerSelector);
-            
-            if (file) {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    imageContainers.forEach(function(imageContainer) {
-                        let img = document.createElement('img');
-                        img.classList = [classImageList];
-                        img.src = e.target.result;
-                        img.alt = 'Imagem Selecionada';
-
-                        imageContainer.innerHTML = '';
-                        imageContainer.appendChild(img);
-                    });
-                };
-
-                reader.readAsDataURL(file);
-            }
+      
+        // Ajuste de estilo do globo para carregamento correto
+        map.on('style.load', () => {
+          map.setFog({});  // Opcional: adicione névoa para um visual mais realista no globo
         });
-    }
+      
+        // Lista de pontos georreferenciados passada pelo Django
+        var geoPoints = {{ geo_points|safe }};
+      
+        // Variável para armazenar o timeout do popup
+        let popupTimeout;
+      
+        // Iterar sobre os pontos e adicionar marcadores com popups no mapa
+        geoPoints.forEach(function(point) {
+          // Criar o elemento do marcador
+          var el = document.createElement('div');
+          el.className = 'marker';
+      
+          // Criar o conteúdo do popup com imagem, nome, descrição e botão
+          var popupContent = `
+            <div class="popup-content" id="popup-${point.id}">
+              <img src="${point.image}" alt="${point.name}">
+              <h3>${point.name}</h3>
+              <p>${point.description}</p>
+              <button onclick="window.location.href='/blockchain/emporium/'" 
+                      style="padding: 5px 10px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;">
+                Ver Mais
+              </button>
+            </div>
+          `;
+      
+          // Criar o popup
+          var popup = new mapboxgl.Popup({
+            offset: 25,
+            closeButton: false,
+            closeOnClick: false
+          }).setHTML(popupContent);
+      
+          // Adicionar o marcador ao mapa
+          var marker = new mapboxgl.Marker(el)
+            .setLngLat([point.lng, point.lat])
+            .addTo(map);
+      
+          // Função para exibir o popup ao passar o mouse sobre o marcador
+          const showPopup = () => {
+            clearTimeout(popupTimeout);  // Cancelar qualquer tentativa de fechar o popup
+            popup.setLngLat([point.lng, point.lat]).addTo(map);  // Exibir o popup
+            map.flyTo({ center: [point.lng, point.lat], zoom: 5 });  // Centralizar o mapa no ponto
+          };
+      
+          // Função para ocultar o popup com delay
+          const hidePopup = () => {
+            popupTimeout = setTimeout(() => {
+              popup.remove();  // Remover o popup após o delay
+            }, 2000);  // Atraso de 2000ms
+          };
+      
+          // Exibir o popup ao passar o mouse sobre o marcador
+          el.addEventListener('mouseenter', showPopup);
+      
+          // Esconder o popup ao sair do marcador (com delay para permitir mover o mouse até o popup)
+          el.addEventListener('mouseleave', hidePopup);
+      
+          // Manipular eventos de mouse sobre o popup
+          document.addEventListener('mouseover', function (e) {
+            const popupElement = document.querySelector(`#popup-${point.id}`);
+            if (popupElement && popupElement.contains(e.target)) {
+              clearTimeout(popupTimeout);  // Se o mouse estiver sobre o popup, cancelar o fechamento
+            }
+          });
+      
+          // Fechar o popup quando o mouse sair completamente do popup
+          document.addEventListener('mouseout', function (e) {
+            const popupElement = document.querySelector(`#popup-${point.id}`);
+            if (popupElement && !popupElement.contains(e.relatedTarget)) {
+              hidePopup();  // Se o mouse sair completamente do popup, iniciar o fechamento
+            }
+          });
+        });
+    </script>
 
-    function showMultipleImages(imageInputId, imageContainerId){
-        document.getElementById(imageInputId).addEventListener('change', function(event) {
-            let imageContainer = document.getElementById(imageContainerId);
-            // imageContainer.innerHTML = ''; // Limpa as imagens anteriores
-        
-            let files = event.target.files;
-        
-            for (let file of files) {
-                if (file.type.startsWith('image/')) {
+    <script>
+        function showImageByZone(zoneOfClick, imageContainerSelector, inputId, classImage, classImageList) {
+            document.getElementById(zoneOfClick).addEventListener('click', function() {
+                let imageContainers = document.querySelectorAll(imageContainerSelector);
+                
+                let image = imageContainers[0].querySelectorAll(classImage);
+                if (image.length > 0) {
+                    document.getElementById(inputId).click();
+                }
+            });
+
+            document.getElementById(inputId).addEventListener('change', function(event) {
+                let file = event.target.files[0];
+                let imageContainers = document.querySelectorAll(imageContainerSelector);
+                
+                if (file) {
                     let reader = new FileReader();
-        
+
                     reader.onload = function(e) {
-                        let figure = document.createElement('figure');
-                        figure.classList = 'col-6 col-lg-4 col-xxl-3 px-1'
-                        let img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.classList = 'w-100';
-                        figure.appendChild(img);
-                        imageContainer.appendChild(figure);
+                        imageContainers.forEach(function(imageContainer) {
+                            let img = document.createElement('img');
+                            img.classList = [classImageList];
+                            img.src = e.target.result;
+                            img.alt = 'Imagem Selecionada';
+
+                            imageContainer.innerHTML = '';
+                            imageContainer.appendChild(img);
+                        });
                     };
-        
+
                     reader.readAsDataURL(file);
                 }
-            }
-        });        
-    }
+            });
+        }
 
-    
-    showImageByZone('dropzone-house', '#image-house-content', 'image-house-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
-    showImageByZone('dropzone-architecture', '#architecture-house-content', 'architecture-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
-    showImageByZone('dropzone-topography', '#topography-content', 'topography-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
-    showImageByZone('dropzone-zoning', '#zoning-content', 'zoning-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
-    showImageByZone('dropzoneProfileImage', '.profileMainContent', 'imageProfileInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
-    showImageByZone('dropzoneProfileImageSecondary', '.profileSecondaryContent', 'imageProfileSecondaryInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
-    
-    showMultipleImages('image-house-input', 'galleryHouse')
-    showMultipleImages('architecture-input', 'galleryArquiteture')
-    showMultipleImages('topography-input', 'galleryTopography')
-    showMultipleImages('zoning-input', 'galleryZoning')
+        function showMultipleImages(imageInputId, imageContainerId){
+            document.getElementById(imageInputId).addEventListener('change', function(event) {
+                let imageContainer = document.getElementById(imageContainerId);
+                // imageContainer.innerHTML = ''; // Limpa as imagens anteriores
+            
+                let files = event.target.files;
+            
+                for (let file of files) {
+                    if (file.type.startsWith('image/')) {
+                        let reader = new FileReader();
+            
+                        reader.onload = function(e) {
+                            let figure = document.createElement('figure');
+                            figure.classList = 'col-6 col-lg-4 col-xxl-3 px-1'
+                            let img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.classList = 'w-100';
+                            figure.appendChild(img);
+                            imageContainer.appendChild(figure);
+                        };
+            
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });        
+        }
+
+        
+        showImageByZone('dropzone-house', '#image-house-content', 'image-house-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+        showImageByZone('dropzone-architecture', '#architecture-house-content', 'architecture-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+        showImageByZone('dropzone-topography', '#topography-content', 'topography-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+        showImageByZone('dropzone-zoning', '#zoning-content', 'zoning-input', '.w-100.border-radius-lg.shadow-lg.mx-auto', 'w-100 border-radius-lg shadow-lg mx-auto');
+        showImageByZone('dropzoneProfileImage', '.profileMainContent', 'imageProfileInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
+        showImageByZone('dropzoneProfileImageSecondary', '.profileSecondaryContent', 'imageProfileSecondaryInput', '.img-fluid.shadow.border-radius-lg', 'img-fluid shadow border-radius-lg');
+        
+        showMultipleImages('image-house-input', 'galleryHouse')
+        showMultipleImages('architecture-input', 'galleryArquiteture')
+        showMultipleImages('topography-input', 'galleryTopography')
+        showMultipleImages('zoning-input', 'galleryZoning')
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

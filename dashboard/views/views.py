@@ -62,21 +62,41 @@ def nft(request):
 	return render(request, 'pages/blockchain/nft.html', context)
 
 def registration(request):
-	herdeiros = ['Alex', 'Jhon', 'Lewis', 'Daniel'] # Variável somente para o carrousel da partial owners.html
-	return render(request, 'pages/blockchain/registration.html', {'herdeiros': herdeiros})
-
-def marketplace(request):
-
-	geo_points = [
-        
+    # Definição dos pontos geográficos
+    geo_points = [
         {
             "lat": -23.22155,
             "lng": -44.71992,
             "name": "Paraty/RJ",
             "description": "Mercado Municipal do Produtor Rural de Paraty.",
-            "image": "https://i.postimg.cc/7PcgqgTq/Paraty.png"
+            "image": "https:"
         }        
     ]
+
+    # Contexto a ser enviado para o template
+    context = {
+        'parent': 'blockchain',
+        'segment': 'registration',
+        'geo_points': geo_points,
+        'herdeiros': ['Alex', 'Jhon', 'Lewis', 'Daniel']  # Variável somente para o carrossel da partial owners.html
+    }
+
+    # Renderização do template com o contexto definido
+    return render(request, 'pages/blockchain/registration.html', context)
+
+
+def marketplace(request):
+
+	geo_points = [
+        
+    {
+      "lat": -23.22155,
+      "lng": -44.71992,
+      "name": "Paraty/RJ",
+      "description": "Mercado Municipal do Produtor Rural de Paraty.",
+      "image": "https://i.postimg.cc/7PcgqgTq/Paraty.png"
+    }        
+  ]
 
 	context = {
 		'parent': 'blockchain',
