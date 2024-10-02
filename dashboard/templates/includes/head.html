@@ -1,20 +1,165 @@
 {% load static %}
 
-<meta charset="utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Mundo Digital</title>
+
+<!-- SEO Meta Tags -->
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
+
+<!-- Meta Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
-<link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
-<title>
-  Dashboard
-</title>
-<!--     Fonts and icons     -->
+<meta name="language" content="Portuguese">
+{% if sharing.title %}
+    <meta name="title" content="{{ sharing.title }}">
+{% else %}
+    <meta name="title" content="Mundo Digital - O mundo em um só lugar">
+{% endif %}
+<meta name="author" content="ASPPIBRA-DAO">
+{% if sharing.description %}
+    <meta name="description" content="{{ sharing.description }}">
+{% else %}
+    <meta name="description" content="Explore o Mundo Digital conosco! Navegue na web3 e participe da revolução digital agora!">
+{% endif %}
+<meta name="keywords" content="Mundo Digital, Digital World, Navegar na web3, world, Inteligência artificial, gemini, midjourney, GPT-4, ChatGPT, google, youtube, instagram, Facebook, Twitter, Chat, revolução digital, g1, Terra, Yahoo, R7, CNN Brasil, Band, Exame, UOL, Jair Bolsonaro, Lula, web3, Blockchain, Bitcoin, Criptomoeda, wallet, Finanças descentralizadas, defi, emprestimo, escritura, Usucapião, posse, imoveis, Créditos de carbono, Meio ambiente, Sustentabilidade, energia, mineração, exploração mineral,...">
+<meta name="revisit-after" content="7 days">
+
+<!-- Canonical Tag -->
+{% if sharing.content_url %}
+    <link rel="canonical" href="https://www.dworld.app/{{ sharing.content_url }}">
+{% else %}
+    <link rel="canonical" href="https://www.dworld.app/">
+{% endif %}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+{% if sharing.content_url %}
+    <meta property="og:url" content="https://www.dworld.app/{{ sharing.content_url }}">
+{% else %}
+    <meta property="og:url" content="https://www.dworld.app/">
+{% endif %}
+{% if sharing.title %}
+    <meta property="og:title" content="{{ sharing.title }}">
+{% else %}
+    <meta property="og:title" content="Mundo Digital - O mundo em um só lugar">
+{% endif %}
+{% if sharing.description %}
+    <meta property="og:description" content="{{ sharing.description }}">
+{% else %}
+    <meta property="og:description" content="Explore o Mundo Digital conosco! Navegue na web3 e participe da revolução digital agora!">
+{% endif %}
+{% if sharing.image_url %}
+    <meta property="og:image" content="{{ sharing.image_url }}">
+{% else %}
+    <meta property="og:image" content="https://i.postimg.cc/RFFjmJGF/Digital-World-App.png">
+{% endif %}
+
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+{% if sharing.content_url %}
+    <meta property="twitter:url" content="https://www.dworld.app/{{ sharing.content_url }}">
+{% else %}
+    <meta property="twitter:url" content="https://www.dworld.app/">
+{% endif %}
+{% if sharing.title %}
+    <meta property="twitter:title" content="{{ sharing.title }}">
+{% else %}
+    <meta property="twitter:title" content="Mundo Digital - O mundo em um só lugar">
+{% endif %}
+{% if sharing.description %}
+    <meta property="twitter:description" content="{{ sharing.description }}">
+{% else %}
+    <meta property="twitter:description" content="Explore o Mundo Digital conosco! Navegue na web3 e participe da revolução digital agora!">
+{% endif %}
+{% if sharing.image_url %}
+    <meta property="twitter:image" content={{ sharing.image_url }}>
+{% else %}
+    <meta property="twitter:image" content="https://i.postimg.cc/RFFjmJGF/Digital-World-App.png">
+{% endif %}
+
+
+<!-- Instagram -->
+<meta property="og:type" content="website">
+{% if sharing.content_url %}
+    <meta property="og:url" content="https://www.dworld.app/{{ sharing.content_url }}">
+{% else %}
+    <meta property="og:url" content="https://www.dworld.app/">
+{% endif %}
+{% if sharing.title %}
+    <meta property="og:title" content="{{ sharing.title }}">
+{% else %}
+    <meta property="og:title" content="Mundo Digital - O mundo em um só lugar">
+{% endif %}
+{% if sharing.description %}
+    <meta property="og:description" content="{{ sharing.description }}">
+{% else %}
+    <meta property="og:description" content="Explore o Mundo Digital conosco! Navegue na web3 e participe da revolução digital agora!">
+{% endif %}
+{% if sharing.image_url %}
+    <meta property="og:image" content="{{ sharing.image_url }}">
+{% else %}
+    <meta property="og:image" content="https://i.postimg.cc/RFFjmJGF/Digital-World-App.png">
+{% endif %}
+
+
+<!-- LinkedIn -->
+{% if sharing.title %}
+    <meta property="og:title" content="{{ sharing.title }}">
+{% else %}
+    <meta property="og:title" content="Mundo Digital - O mundo em um só lugar">
+{% endif %}
+{% if sharing.description %}
+    <meta property="og:description" content="{{ sharing.description }}">
+{% else %}
+    <meta property="og:description" content="Explore o Mundo Digital conosco! Navegue na web3 e participe da revolução digital agora!">
+{% endif %}
+{% if sharing.image_url %}
+    <meta property="og:image" content="{{ sharing.image_url }}">
+{% else %}
+    <meta property="og:image" content="https://i.postimg.cc/RFFjmJGF/Digital-World-App.png">
+{% endif %}
+{% if sharing.content_url %}
+    <meta property="og:url" content="https://www.dworld.app/{{ sharing.content_url }}">
+{% else %}
+    <meta property="og:url" content="https://www.dworld.app/">
+{% endif %}
+<meta property="og:site_name" content="Mundo Digital">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg" sizes="512x512" href="{% static 'assets/img/favicon/Dworld-512.svg' %}">
+<link rel="icon" type="image/svg" sizes="192x192" href="{% static 'assets/img/favicon/Dworld-192.svg' %}">
+<link rel="icon" type="image/svg" sizes="180x180" href="{% static 'assets/img/favicon/Dworld-180.svg' %}">
+<link rel="icon" type="image/svg" sizes="150x150" href="{% static 'assets/img/favicon/Dworld-150.svg' %}">
+<link rel="icon" type="image/svg" sizes="120x120" href="{% static 'assets/img/favicon/Dworld-120.svg' %}">
+<link rel="icon" type="image/svg" sizes="110x110" href="{% static 'assets/img/favicon/Dworld-110.svg' %}">
+<link rel="icon" type="image/svg" sizes="96x96" href="{% static 'assets/img/favicon/Dworld-96.svg' %}">
+<link rel="icon" type="image/svg" sizes="48x48" href="{% static 'assets/img/favicon/Dworld-48.svg' %}">
+<link rel="icon" type="image/svg" sizes="32x32" href="{% static 'assets/img/favicon/Dworld-32.svg' %}">
+<link rel="icon" type="image/svg" sizes="16x16" href="{% static 'assets/img/favicon/Dworld-16.svg' %}">
+<link rel="icon" type="image/svg+xml" href="{% static 'assets/img/favicon/Dworld.svg' %}">
+<link rel="manifest" href="{% static 'assets/img/favicon/manifest.json' %}">
+<link rel="manifest" href="{% static 'assets/img/favicon/app.webmanifest' %}">
+<link rel="mask-icon" href="{% static 'assets/img/favicon/Dworld.svg' %}" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fonts -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+<!-- Icons -->
 <!-- Nucleo Icons -->
 <link href="{% static 'assets/css/nucleo-icons.css' %}" rel="stylesheet" />
 <link href="{% static 'assets/css/nucleo-svg.css' %}" rel="stylesheet" />
 <!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script async src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
 <!-- CSS Files -->
 <link id="pagestyle" href="{% static 'assets/css/material-dashboard.css' %}" rel="stylesheet" />
+
+<!-- Googleo Search Verificar propriedade -->
+<meta name="google-site-verification" content="MnilX-Mt1xSu_bpEwQ7Dz7H-hSvZ6i2ZZgRKfzYfcPM" />
