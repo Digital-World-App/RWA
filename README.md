@@ -23,10 +23,59 @@ To run the smart contract, you must have the following:
 - A Web3 wallet 💼
 - Gas tokens to pay network fees ⛽
 
+<br />
+
+> 👉 Install modules via `VENV`.
+
+```bash
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+```
+
+<br />
+
+> 👉 Edit the `.env` using the template `.env.sample`.
+
+```env
+
+# True for development, False for production
+DEBUG=True
+
+```
+
+<br />
+
+> 👉 Set Up Database
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+<br />
+
+> 👉 Create the Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+<br />
+
+> 👉 Start the app
+
+```bash
+python manage.py runserver
+```
+
+At this point, the app runs at `http://127.0.0.1:8000/`.
+
+<br />
+
 ### Requirements for scanning real estate records 🏡
 
 In addition to the requirements outlined in the "Requirements" section of this README, the real estate records digitization process also requires the collection of the following information and documents:
-
 
 | Categoria                       | Documento                                             | Descrição                                                                         |
 |---------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------|
@@ -64,8 +113,6 @@ The project features a Solidity contract that serves as a decentralized marketpl
 
 ### Screenshots
 
-
-
 > [Mundo Digital](https://) - `Proprietários`
 
 ![FORMULARIO ESCRITURA](https://github.com/ASPPIBRA-DAO/Imagens/blob/d429afe0d729ceba623dba4a7437e5190a608b94/Layout_app/Escritura/Formulario01.png)
@@ -92,7 +139,7 @@ The project features a Solidity contract that serves as a decentralized marketpl
 <br />
 
 > [Mundo Digital](https://) - `Plano Arquitetônico`
- 
+
 ![FORMULARIO ESCRITURA](https://github.com/ASPPIBRA-DAO/Imagens/blob/4786522402a31fc1604dff9c72cf8a5d3926d850/Layout_app/Escritura/Plano%20Arquitetonico.png)
 <br />
 
@@ -106,22 +153,20 @@ The project features a Solidity contract that serves as a decentralized marketpl
 ![FORMULARIO ESCRITURA](https://github.com/ASPPIBRA-DAO/Imagens/blob/4786522402a31fc1604dff9c72cf8a5d3926d850/Layout_app/Escritura/Plano%20de%20Zoneamento.png)
 <br />
 
-
 # Mundo Digital (DWorld)
+
 Presentation with description of the ERC721 and ERC1155 smart contract with its functions for nft marketplace.
-
-
 
 ## ABI, Address, and Verification
 
 The abi contract is in `DigitalWorld.abi`. It is the abi of the implementation contract.
 Interaction with DWorld is done at the proxy address at `0x00000000000000000000000000000000000`. To see
-https://etherscan.io/token/0x0000000000000000000 for live on-chain details and the section on bytecode verification below.
+<https://etherscan.io/token/0x0000000000000000000> for live on-chain details and the section on bytecode verification below.
 
 ## Contract specification
 
 Digital World (DWorld) is an ERC721 and ERC 1155 token that is minted and burned centrally by ASPPIBRA-DAO,
-representing the trusted party backing the token in US dollars. 
+representing the trusted party backing the token in US dollars.
 
 ### ERC20 Token
 
@@ -129,6 +174,7 @@ DWorld's public interface is ERC721 and ERC1155 interface
 specified by [EIP-20](https://github.com/ethereum/ercs/blob/master/ERCS/erc-1155.md).
 
 #### Read Contract
+
 - `name()`
 - `symbol()`
 - `decimals()`
@@ -137,89 +183,101 @@ specified by [EIP-20](https://github.com/ethereum/ercs/blob/master/ERCS/erc-1155
 - `allowance(address owner, address spender)`
   
 #### Write Contract
+
 - `transfer(address to, uint256 value)`
 - `approve(address spender, uint256 value)`
 - `transferFrom(address from, address to, uint256 value)`
 
-#### And the usual events.
+#### And the usual events
+
 - `event Transfer(address indexed from, address indexed to, uint256 value)`
 - `event Approval(address indexed owner, address indexed spender, uint256 value)`
 
 Typical interaction with the contract will use `transfer` to move the token as payment.
-Additionally, a pattern involving `approve` and `transferFrom` can be used to allow another 
-address to move tokens from your address to a third party without the need for the middleperson 
-to custody the tokens, such as in the 0x protocol. 
+Additionally, a pattern involving `approve` and `transferFrom` can be used to allow another
+address to move tokens from your address to a third party without the need for the middleperson
+to custody the tokens, such as in the 0x protocol.
 
 #### Warning about ERC20 approve front-running
 
 There is a well known gotcha involving the ERC20 `approve` method. The problem occurs when the owner decides
-to change the allowance of a spender that already has an allowance. If the spender sends a `transferFrom` 
+to change the allowance of a spender that already has an allowance. If the spender sends a `transferFrom`
 transaction at a similar time that the owner sends the new `approve` transaction
-and the `transferFrom` by the spender goes through first, then the spender gets to use the 
+and the `transferFrom` by the spender goes through first, then the spender gets to use the
 original allowance, and also get approved for the intended new allowance.
 
 The recommended mitigation in cases where the owner does not trust the spender is to
-first set the allowance to zero before setting it to a new amount, checking that the 
-allowance was not spent before sending the new approval transaction. Note, however, that any 
-allowance change is subject to front-running, which is as simple as watching the 
-mempool for certain transactions and then offering a higher gas price to get another 
+first set the allowance to zero before setting it to a new amount, checking that the
+allowance was not spent before sending the new approval transaction. Note, however, that any
+allowance change is subject to front-running, which is as simple as watching the
+mempool for certain transactions and then offering a higher gas price to get another
 transaction mined onto the blockchain more quickly.
 
 # Explanation of User Roles
 
 ## Minting (Token Creation)
+
 - **Description**: Any user can create a new token.
 - **How to Use**: Call the `mint` function by providing a metadata URI and paying a fee if necessary.
 - **Function**: `mint(string memory uri) public payable`
 
 ## Owner Token Query
+
 - **Description**: Allows users to see all token IDs that a given address has.
 - **How to Use**: Use the `tokenIdsOfOwner` function passing the owner's address.
 - **Function**: `tokenIdsOfOwner(address _owner) public view returns (uint256[] memory)`
 
 ## Metadata URI Query
+
 - **Description**: Allows you to obtain the URI of the metadata of a specific token.
 - **How to Use**: Call the `tokenURI` function with the ID of the desired token.
 - **Function**: `tokenURI(uint256 tokenId) public view returns (string memory)`
 
 ## Token Creator Query
+
 - **Description**: Allows you to check who created a specific token.
 - **How to Use**: Use the `creatorOf` function passing the token ID.
 - **Function**: `creatorOf(uint tokenId) public view returns (address)`
 
 ## Token Transfer
+
 - **Description**: Users can transfer tokens between addresses.
 - **How to Use**: Use the `transferFrom` or `safeTransferFrom` functions (with or without additional data).
 - **Functions**:
-   - `transferFrom(address from, address to, uint256 tokenId) public`
-   - `safeTransferFrom(address from, address to, uint256 tokenId) public`
-   - `safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public`
+  - `transferFrom(address from, address to, uint256 tokenId) public`
+  - `safeTransferFrom(address from, address to, uint256 tokenId) public`
+  - `safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public`
 
 ## Approve Transfers
+
 - **Description**: Users can authorize other addresses to transfer their specific tokens or all of their tokens.
 - **How to Use**: Call the `approve` or `setApprovalForAll` functions.
 - **Functions**:
-   - `approve(address to, uint256 tokenId) public`
-   - `setApprovalForAll(address operator, bool approved) public`
+  - `approve(address to, uint256 tokenId) public`
+  - `setApprovalForAll(address operator, bool approved) public`
 
 ## Approval Consultation
+
 - **Description**: Allows you to check who is approved to transfer a specific token or all tokens from an owner.
 - **How to Use**: Use the `getApproved` or `isApprovedForAll` functions.
 - **Functions**:
-   - `getApproved(uint256 tokenId) public view returns (address)`
-   - `isApprovedForAll(address owner, address operator) public view returns (bool)`
+  - `getApproved(uint256 tokenId) public view returns (address)`
+  - `isApprovedForAll(address owner, address operator) public view returns (bool)`
 
 ## Update Metadata
+
 - **Description**: The token owner can update the token metadata.
 - **How to Use**: Call the `setTokenURI` function providing the token ID and the new URI.
 - **Function**: `setTokenURI(uint256 tokenId, string memory uri) public`
 
 ## Voting
+
 - **Description**: Used to interact with ecosystem governance or proposals.
 - **How to Use**: Depends on the specific implementation of governance in the contract, usually involving voting functions.
 - **Function**: Dependent on the specific governance contract, which is not detailed here.
 
 ## Comments
+
 These functions enable a wide range of interactions with NFT tokens, from creation to transfer and participation in ecosystem governance. Make sure you understand the permissions and restrictions associated with each role before using them.
 
 # Contract Administrator Roles
@@ -247,7 +305,7 @@ For some specific cases, the total supply of NFTs is guaranteed by securities he
 
 ## Pausing the Contract
 
-In the event of a critical security threat, ASPPIBRA-DAO has the ability to pause all NFT token transfers and approvals. This functionality is managed by an `owner` role, as implemented by the OpenZeppelin standards [Ownable](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/5daaf60d11ee2075260d0f3adfb22b1c536db983/contracts/ownership/Ownable.sol) and [Pausable ](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/5daaf60d11ee2075260d0f3adfb22b1c536db983/contracts/lifecycle/Pausable.sol).
+In the event of a critical security threat, ASPPIBRA-DAO has the ability to pause all NFT token transfers and approvals. This functionality is managed by an `owner` role, as implemented by the OpenZeppelin standards [Ownable](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/5daaf60d11ee2075260d0f3adfb22b1c536db983/contracts/ownership/Ownable.sol) and [Pausable](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/5daaf60d11ee2075260d0f3adfb22b1c536db983/contracts/lifecycle/Pausable.sol).
 
 ### Examples
 
@@ -268,7 +326,7 @@ To comply with regulatory requirements, we have introduced an asset protection f
 
 ## Upgradability Proxy
 
-To facilitate contract updating on the immutable blockchain, we follow a delegation pattern with two contracts: a proxy contract that represents the token and an implementation contract that contains the token logic. 
+To facilitate contract updating on the immutable blockchain, we follow a delegation pattern with two contracts: a proxy contract that represents the token and an implementation contract that contains the token logic.
 
 ### Delegation with Delegatecall
 
@@ -290,23 +348,26 @@ By following these practices, we ensure that the contract remains secure, updata
 
 The proxy contract and implementation contracts are verified on etherscan at the following links:
 
-Because the implementation address in the proxy is a private variable, 
+Because the implementation address in the proxy is a private variable,
 verifying that this is the proxy being used requires reading contract
 storage directly. This can be done using a mainnet node, such as infura,
-by pasting the network address in `truffle-config.js` and running 
+by pasting the network address in `truffle-config.js` and running
 
 `truffle exec ./getImplementationAddress.js --network mainnet`
 
 ## Contract Tests
 
 ### Token
+
 - [Token Contract](https://testnet.bscscan.com/token/0xb1d4a44ce8aa5e2eb2e23d7002693918f4f36c72)
 
 ### NFT
+
 - [NFT Contract 1](https://testnet.bscscan.com/address/0x4d92829620a7dEf47Ba60f9E68eAC1e1683A87fF#code)
 - [NFT Contract 2](https://testnet.bscscan.com/address/0x2cfF281E01d58143089997AC5A495D85d89D1bB2#code)
 
 ### Contracts
+
 - [Contract 1](https://testnet.bscscan.com/address/0x3fda2E660DC06D3eCc2cC5a797af7eD8De89f2f4#code)
 - [Contract 2](https://testnet.bscscan.com/address/0x7FF0884888EA59c6a02C2D8a6844A27235BA78F5#code)
 - [Contract 3](https://testnet.bscscan.com/address/0x86a98eb31721f997Fed65f2aEa535DD428dCe193#code)
@@ -353,4 +414,5 @@ Contributions to documentation are also valued. If you identify areas that need 
 Thanks in advance for your support and contributions to making the Digital World smart contract even better. Together, we can create a more robust and efficient platform.
 
 ## License 📄
+
 This project is protected by the terms of the Proprietary Software license model. See the file [**Licença**](https://github.com/ASPPIBRA-DAO/DIGITAL_WORLD_REAL_ESTATE_MARKET/blob/a145c7c2e2a1fa311bb814ed8ed9b1819a20631d/LICENSE.md) for details.

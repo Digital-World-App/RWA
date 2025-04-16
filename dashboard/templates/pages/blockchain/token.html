@@ -6,165 +6,219 @@
     <div class="container-fluid py-4">
       <div class="row min-vh-80">
         <div class="col-lg-8 col-md-10 col-12 m-auto">
-          <h3 class="mt-3 mb-0 text-center">Add new Product</h3>
-          <p class="lead font-weight-normal opacity-8 mb-7 text-center">This information will let us know more about you.</p>
+          <h3 class="mt-3 mb-0 text-center">Fábrica de Tokens</h3>
+          <p class="lead font-weight-normal opacity-8 mb-7 text-center">Lance e gerencie seus tokens digitais de forma intuitiva e segura.
+            Nossa plataforma oferece as ferramentas necessárias para você criar seus próprios ativos digitais personalizados, seja para projetos,
+            comunidades ou negócios.
+          </p>
           <div class="card">
             <div class="card-header p-0 position-relative mt-n5 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <div class="multisteps-form__progress">
-                  <button class="multisteps-form__progress-btn js-active" type="button" title="Product Info">
-                    <span>1. Product Info</span>
+                  <button class="multisteps-form__progress-btn js-active" type="button" title="Informações do Produto" aria-label="Etapa 1: Informações do Produto">
+                    <span>1. Informações do Produto</span>
                   </button>
-                  <button class="multisteps-form__progress-btn" type="button" title="Media">2. Media</button>
-                  <button class="multisteps-form__progress-btn" type="button" title="Socials">3. Socials</button>
-                  <button class="multisteps-form__progress-btn" type="button" title="Pricing">4. Pricing</button>
+                  <button class="multisteps-form__progress-btn" type="button" title="Mídia" aria-label="Etapa 2: Mídia">2. Mídia</button>
+                  <button class="multisteps-form__progress-btn" type="button" title="Redes Sociais" aria-label="Etapa 3: Redes Sociais">3. Redes Sociais</button>
+                  <button class="multisteps-form__progress-btn" type="button" title="Preço" aria-label="Etapa 4: Preço">4. Preço</button>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <form class="multisteps-form__form">
-                <!--single form panel-->
-                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                  <h5 class="font-weight-bolder">Product Information</h5>
+              <form class="multisteps-form__form" id="tokenForm">
+                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white js-active" data-animation="FadeIn" id="panel-product-info" aria-labelledby="progress-btn-1">
+                  <h5 class="font-weight-bolder">Informações do Produto</h5>
                   <div class="multisteps-form__content">
                     <div class="row mt-3">
                       <div class="col-12 col-sm-6">
                         <div class="input-group input-group-dynamic">
-                          <label for="exampleFormControlInput1" class="form-label">Name</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label for="tokenName" class="form-label">Nome <span class="text-danger">*</span></label>
+                          <input class="multisteps-form__input form-control" type="text" id="tokenName" required aria-required="true">
+                          <div class="invalid-feedback">Por favor, insira o nome do token.</div>
                         </div>
                       </div>
                       <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <div class="input-group input-group-dynamic">
-                          <label for="exampleFormControlInput1" class="form-label">Weight</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label for="tokenSymbol" class="form-label">Sigla <span class="text-danger">*</span></label>
+                          <input class="multisteps-form__input form-control" type="text" id="tokenSymbol" required aria-required="true">
+                          <div class="invalid-feedback">Por favor, insira a sigla do token.</div>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <label class="mt-4">Description</label>
+                    <div class="row mt-3">
+                      <div class="col-sm-12">
+                        <label class="mt-4">Descrição</label>
                         <p class="form-text text-muted text-xs ms-1 d-inline">
-                          (optional)
+                          (opcional)
                         </p>
                         <div id="edit-deschiption" class="h-50">
-                          <p>Some initial <strong>bold</strong> text</p>
+                          <p>Algum texto <strong>negrito</strong> inicial</p>
                         </div>
-                      </div>
-                      <div class="col-sm-6 mt-sm-3 mt-5">
-                        <label class="form-control ms-0">Category</label>
-                        <select class="form-control" name="choices-category" id="choices-category">
-                          <option value="Choice 1" selected="">Clothing</option>
-                          <option value="Choice 2">Real Estate</option>
-                          <option value="Choice 3">Electronics</option>
-                          <option value="Choice 4">Furniture</option>
-                          <option value="Choice 5">Others</option>
-                        </select>
-                        <label class="form-control ms-0">Sizes</label>
-                        <select class="form-control" name="choices-sizes" id="choices-sizes">
-                          <option value="Choice 1" selected="">Medium</option>
-                          <option value="Choice 2">Small</option>
-                          <option value="Choice 3">Large</option>
-                          <option value="Choice 4">Extra Large</option>
-                          <option value="Choice 5">Extra Small</option>
-                        </select>
                       </div>
                     </div>
                     <div class="button-row d-flex mt-4">
-                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Próximo" onclick="validateProductInfo()">Próximo</button>
                     </div>
                   </div>
                 </div>
-                <!--single form panel-->
-                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white" data-animation="FadeIn">
-                  <h5 class="font-weight-bolder">Media</h5>
+
+                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white" data-animation="FadeIn" id="panel-media" aria-labelledby="progress-btn-2" aria-hidden="true">
+                  <h5 class="font-weight-bolder">Mídia</h5>
                   <div class="multisteps-form__content">
                     <div class="row mt-3">
                       <div class="col-12">
-                        <label class="form-control mb-0">Product images</label>
-                        <div action="/file-upload" class="form-control border dropzone" id="productImg"></div>
+                        <label class="form-control mb-0">Imagens do Produto</label>
+                        <div action="/file-upload" class="form-control border dropzone" id="productImg">
+                          <div class="fallback">
+                            <input name="file" type="file" multiple />
+                          </div>
+                        </div>
+                        <div id="upload-error" class="text-danger mt-2" style="display: none;">Erro ao enviar a imagem.</div>
                       </div>
                     </div>
                     <div class="button-row d-flex mt-4">
-                      <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                      <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Anterior">Anterior</button>
+                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Próximo">Próximo</button>
                     </div>
                   </div>
                 </div>
-                <!--single form panel-->
-                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white" data-animation="FadeIn">
-                  <h5 class="font-weight-bolder">Socials</h5>
+
+                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white" data-animation="FadeIn" id="panel-socials" aria-labelledby="progress-btn-3" aria-hidden="true">
+                  <h5 class="font-weight-bolder">Redes Sociais</h5>
                   <div class="multisteps-form__content">
                     <div class="row mt-3">
-                      <div class="col-12">
+                      <div class="col-md-4">
                         <div class="input-group input-group-dynamic">
-                          <label class="form-label">Shoppify Handle</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label class="form-label">Twitter Handle</label>
+                          <input class="multisteps-form__input form-control" type="text" id="twitterHandle">
                         </div>
                       </div>
-                      <div class="col-12 mt-3">
+                      <div class="col-md-4 mt-3 mt-md-0">
                         <div class="input-group input-group-dynamic">
-                          <label class="form-label">Facebook Account</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label class="form-label">Telegram Username</label>
+                          <input class="multisteps-form__input form-control" type="text" id="telegramUsername">
                         </div>
                       </div>
-                      <div class="col-12 mt-3">
+                      <div class="col-md-4 mt-3 mt-md-0">
                         <div class="input-group input-group-dynamic">
-                          <label class="form-label">Instagram Account</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label class="form-label">Discord Username</label>
+                          <input class="multisteps-form__input form-control" type="text" id="discordUsername">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-md-4">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">Facebook Account URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="facebookUrl">
+                        </div>
+                      </div>
+                      <div class="col-md-4 mt-3 mt-md-0">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">GitHub Profile URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="githubUrl">
+                        </div>
+                      </div>
+                      <div class="col-md-4 mt-3 mt-md-0">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">LinkedIn Profile URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="linkedinUrl">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-md-4">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">Crunchbase Profile URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="crunchbaseUrl">
+                        </div>
+                      </div>
+                      <div class="col-md-4 mt-3 mt-md-0">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">TikTok Profile URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="tiktokUrl">
+                        </div>
+                      </div>
+                      <div class="col-md-4 mt-3 mt-md-0">
+                        <div class="input-group input-group-dynamic">
+                          <label class="form-label">YouTube Channel URL</label>
+                          <input class="multisteps-form__input form-control" type="url" id="youtubeUrl">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="button-row d-flex mt-4 col-12">
-                        <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                        <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Anterior">Anterior</button>
+                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Próximo">Próximo</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!--single form panel-->
-                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white h-100" data-animation="FadeIn">
-                  <h5 class="font-weight-bolder">Pricing</h5>
+
+                <div class="multisteps-form__panel pt-3 border-radius-xl bg-white h-100" data-animation="FadeIn" id="panel-pricing" aria-labelledby="progress-btn-4" aria-hidden="true">
+                  <h5 class="font-weight-bolder">Preço</h5>
                   <div class="multisteps-form__content mt-3">
                     <div class="row">
                       <div class="col-3">
                         <div class="input-group input-group-dynamic">
-                          <label class="form-label">Price</label>
-                          <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <label for="tokenPrice" class="form-label">Preço <span class="text-danger">*</span></label>
+                          <input type="number" class="form-control w-100" id="tokenPrice" aria-describedby="priceHelp" required aria-required="true" min="0" step="0.01">
+                          <div class="invalid-feedback">Por favor, insira o preço do token.</div>
                         </div>
                       </div>
                       <div class="col-4">
+                        <label for="choices-currency" class="form-label">Moeda</label>
                         <select class="form-control" name="choices-sizes" id="choices-currency">
-                          <option value="Choice 1" selected="">USD</option>
-                          <option value="Choice 2">EUR</option>
-                          <option value="Choice 3">GBP</option>
-                          <option value="Choice 4">CNY</option>
-                          <option value="Choice 5">INR</option>
-                          <option value="Choice 6">BTC</option>
+                          <option value="USD" selected="">USD</option>
+                          <option value="EUR">EUR</option>
+                          <option value="GBP">GBP</option>
+                          <option value="CNY">CNY</option>
+                          <option value="INR">INR</option>
+                          <option value="BTC">BTC</option>
                         </select>
                       </div>
                       <div class="col-5">
                         <div class="input-group input-group-dynamic">
-                          <label class="form-label">SKU</label>
-                          <input class="multisteps-form__input form-control" type="text" />
+                          <label for="tokenSKU" class="form-label">SKU</label>
+                          <input class="multisteps-form__input form-control" type="text" id="tokenSKU">
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-12">
-                        <label class="mt-4 form-label">Tags</label>
+                      <div class="col-md-6">
+                        <label for="choices-tags" class="mt-4 form-label">Tags</label>
                         <select class="form-control" name="choices-tags" id="choices-tags" multiple>
-                          <option value="Choice 1" selected>In Stock</option>
-                          <option value="Choice 2">Out of Stock</option>
-                          <option value="Choice 3">Sale</option>
-                          <option value="Choice 4">Black Friday</option>
+                          <option value="in_stock" selected>Em Estoque</option>
+                          <option value="out_of_stock">Fora de Estoque</option>
+                          <option value="sale">Promoção</option>
+                          <option value="black_friday">Black Friday</option>
                         </select>
                       </div>
+
+                      <div class="col-md-6">
+                        <label for="choices-blockchain" class="mt-4 form-label">Blockchain <span class="text-danger">*</span></label>
+                        <select class="form-control" name="blockchain" id="choices-blockchain" required aria-required="true">
+                          <option value="" disabled selected>Selecione a Blockchain</option>
+                          <option value="bitcoin">Bitcoin</option>
+                          <option value="ethereum">Ethereum</option>
+                          <option value="bnb">BNB Smart Chain</option>
+                          <option value="solana">Solana</option>
+                          <option value="cardano">Cardano</option>
+                          <option value="xrp">XRP</option>
+                          <option value="polkadot">Polkadot</option>
+                          <option value="avalanche">Avalanche</option>
+                          <option value="tron">Tron</option>
+                          <option value="stellar">Stellar</option>
+                          <option value="hedera">Hedera Hashgraph</option>
+                          <option value="polygon">Polygon</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione a blockchain.</div>
+                      </div>
                     </div>
+
                     <div class="button-row d-flex mt-0 mt-md-4">
-                      <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button>
+                      <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Anterior">Anterior</button>
+                      <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Enviar">Enviar</button>
                     </div>
                   </div>
                 </div>
@@ -179,29 +233,25 @@
 {% endblock content %}
 
 {% block extra_js %}
-  
+
   <script src="{% static 'assets/js/plugins/choices.min.js' %}"></script>
   <script src="{% static 'assets/js/plugins/dropzone.min.js' %}"></script>
   <script src="{% static 'assets/js/plugins/quill.min.js' %}"></script>
   <script src="{% static 'assets/js/plugins/multistep-form.js' %}"></script>
   <script>
+    var quillDescription;
     if (document.getElementById('edit-deschiption')) {
-      var quill = new Quill('#edit-deschiption', {
+      quillDescription = new Quill('#edit-deschiption', {
         theme: 'snow' // Specify theme in configuration
       });
     };
 
-    if (document.getElementById('choices-category')) {
-      var element = document.getElementById('choices-category');
+    if (document.getElementById('choices-blockchain')) {
+      var element = document.getElementById('choices-blockchain');
       const example = new Choices(element, {
-        searchEnabled: false
-      });
-    };
-
-    if (document.getElementById('choices-sizes')) {
-      var element = document.getElementById('choices-sizes');
-      const example = new Choices(element, {
-        searchEnabled: false
+        searchEnabled: false,
+        placeholder: true,
+        placeholderValue: 'Selecione'
       });
     };
 
@@ -220,14 +270,25 @@
 
       examples.setChoices(
         [{
-            value: 'One',
-            label: 'Expired',
-            disabled: true
+            value: 'in_stock',
+            label: 'Em Estoque',
+            disabled: false,
+            selected: true
           },
           {
-            value: 'Two',
-            label: 'Out of Stock',
-            selected: true
+            value: 'out_of_stock',
+            label: 'Fora de Estoque',
+            disabled: false
+          },
+          {
+            value: 'sale',
+            label: 'Promoção',
+            disabled: false
+          },
+          {
+            value: 'black_friday',
+            label: 'Black Friday',
+            disabled: false
           }
         ],
         'value',
@@ -235,8 +296,176 @@
         false,
       );
     }
-  </script>
-  <script>
+
+    // Inicialização do Dropzone
+    Dropzone.autoDiscover = false;
+    var productImgDropzone = new Dropzone("#productImg", {
+      dictDefaultMessage: "<i class='fas fa-upload'></i> Arraste e solte arquivos aqui ou clique para enviar",
+      acceptedFiles: "image/*",
+      maxFiles: 5,
+      addRemoveLinks: true,
+      dictRemoveFile: "Remover",
+      // Simulação de sucesso (você precisará implementar a lógica real no backend)
+      success: function(file, response) {
+        console.log('Arquivo enviado com sucesso:', response);
+        document.getElementById('upload-error').style.display = 'none';
+      },
+      error: function(file, errorMessage) {
+        console.error('Erro no envio:', errorMessage);
+        document.getElementById('upload-error').style.display ='block';
+      }
+    });
+
+    function validateProductInfo() {
+      const tokenNameInput = document.getElementById('tokenName');
+      const tokenSymbolInput = document.getElementById('tokenSymbol');
+      let isValid = true;
+
+      if (tokenNameInput.value.trim() === '') {
+        tokenNameInput.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        tokenNameInput.classList.remove('is-invalid');
+      }
+
+      if (tokenSymbolInput.value.trim() === '') {
+        tokenSymbolInput.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        tokenSymbolInput.classList.remove('is-invalid');
+      }
+
+      if (isValid) {
+        document.querySelector('.multisteps-form__progress-btn.js-active').classList.remove('js-active');
+        document.querySelector('[title="Mídia"]').classList.add('js-active');
+        document.getElementById('panel-product-info').setAttribute('aria-hidden', 'true');
+        document.getElementById('panel-media').removeAttribute('aria-hidden');
+      }
+    }
+
+    document.getElementById('tokenForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      const tokenName = document.getElementById('tokenName').value;
+      const tokenSymbol = document.getElementById('tokenSymbol').value;
+      const description = quillDescription ? quillDescription.root.innerHTML : '';
+      const price = document.getElementById('tokenPrice').value;
+      const currency = document.getElementById('choices-currency').value;
+      const sku = document.getElementById('tokenSKU').value;
+      const tags = Array.from(document.getElementById('choices-tags').selectedOptions).map(option => option.value);
+      const blockchain = document.getElementById('choices-blockchain').value;
+      const twitterHandle = document.getElementById('twitterHandle').value;
+      const telegramUsername = document.getElementById('telegramUsername').value;
+      const discordUsername = document.getElementById('discordUsername').value;
+      const facebookUrl = document.getElementById('facebookUrl').value;
+      const githubUrl = document.getElementById('githubUrl').value;
+      const linkedinUrl = document.getElementById('linkedinUrl').value;
+      const crunchbaseUrl = document.getElementById('crunchbaseUrl').value;
+      const tiktokUrl = document.getElementById('tiktokUrl').value;
+      const youtubeUrl = document.getElementById('youtubeUrl').value;
+      const productImages = productImgDropzone.getAcceptedFiles(); // Obter arquivos enviados
+
+      let isValidFinal = true;
+      const blockchainSelect = document.getElementById('choices-blockchain');
+      const priceInput = document.getElementById('tokenPrice');
+
+      if (blockchain === '') {
+        blockchainSelect.classList.add('is-invalid');
+        isValidFinal = false;
+      } else {
+        blockchainSelect.classList.remove('is-invalid');
+      }
+
+      if (price.trim() === '' || isNaN(parseFloat(price)) || parseFloat(price) < 0) {
+        priceInput.classList.add('is-invalid');
+        isValidFinal = false;
+      } else {
+        priceInput.classList.remove('is-invalid');
+      }
+
+      if (isValidFinal) {
+        const formData = new FormData();
+        formData.append('tokenName', tokenName);
+        formData.append('tokenSymbol', tokenSymbol);
+        formData.append('description', description);
+        formData.append('price', price);
+        formData.append('currency', currency);
+        formData.append('sku', sku);
+        tags.forEach(tag => formData.append('tags', tag));
+        formData.append('blockchain', blockchain);
+        formData.append('twitterHandle', twitterHandle);
+        formData.append('telegramUsername', telegramUsername);
+        formData.append('discordUsername', discordUsername);
+        formData.append('facebookUrl', facebookUrl);
+        formData.append('githubUrl', githubUrl);
+        formData.append('linkedinUrl', linkedinUrl);
+        formData.append('crunchbaseUrl', crunchbaseUrl);
+        formData.append('tiktokUrl', tiktokUrl);
+        formData.append('youtubeUrl', youtubeUrl);
+        productImages.forEach(file => formData.append('productImages', file));
+
+        // Simulação de envio de dados via AJAX (substitua pela sua lógica real)
+        fetch('/sua-url-de-envio/', {
+          method: 'POST',
+          body: formData,
+          // Se você não estiver usando FormData, pode precisar definir o Content-Type
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // },
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Sucesso:', data);
+          // Redirecionar o usuário ou mostrar uma mensagem de sucesso
+          alert('Token criado com sucesso!');
+          document.getElementById('tokenForm').reset();
+          if (quillDescription) {
+            quillDescription.setText('');
+          }
+          productImgDropzone.removeAllFiles();
+          // Resetar os selects do Choices.js
+          const blockchainChoices = Choices.instances.find(choice => choice.id === 'choices-blockchain');
+          if (blockchainChoices) {
+            blockchainChoices.setValue('');
+          }
+          const currencyChoices = Choices.instances.find(choice => choice.id === 'choices-currency');
+          if (currencyChoices) {
+            currencyChoices.setValue('USD');
+          }
+          const tagsChoices = Choices.instances.find(choice => choice.id === 'choices-tags');
+          if (tagsChoices) {
+            tagsChoices.removeActiveItems();
+            tagsChoices.setValue(['in_stock']);
+          }
+          // Voltar para a primeira etapa
+          document.querySelectorAll('.multisteps-form__panel').forEach((panel, index) => {
+            panel.setAttribute('aria-hidden', index !== 0);
+            panel.classList.remove('js-active');
+            if (index === 0) {
+              panel.classList.add('js-active');
+            }
+          });
+          document.querySelectorAll('.multisteps-form__progress-btn').forEach((btn, index) => {
+            btn.classList.remove('js-active');
+            if (index === 0) {
+              btn.classList.add('js-active');
+            }
+          });
+
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+          alert('Ocorreu um erro ao criar o token.');
+        });
+      } else {
+        // Se a validação falhar na última etapa, garantir que o painel de preço esteja visível
+        document.querySelectorAll('.multisteps-form__panel').forEach(panel => panel.setAttribute('aria-hidden', 'true'));
+        document.getElementById('panel-pricing').removeAttribute('aria-hidden');
+        document.querySelectorAll('.multisteps-form__progress-btn').forEach(btn => btn.classList.remove('js-active'));
+        document.querySelector('[title="Preço"]').classList.add('js-active');
+      }
+    });
+
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
