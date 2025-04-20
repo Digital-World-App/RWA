@@ -153,9 +153,8 @@ The project features a Solidity contract that serves as a decentralized marketpl
 ![FORMULARIO ESCRITURA](https://github.com/ASPPIBRA-DAO/Imagens/blob/4786522402a31fc1604dff9c72cf8a5d3926d850/Layout_app/Escritura/Plano%20de%20Zoneamento.png)
 <br />
 
-<video controls src="https://github.com/ASPPIBRA-DAO/Imagens/blob/0d49b847909afc5124a616ecf602e68c7d449844/MP4/marktplace-D-World.mp4">
-  Seu navegador não suporta o elemento <code>video</code>.
-</video>
+
+https://raw.githubusercontent.com/ASPPIBRA-DAO/Imagens/blob/0d49b847909afc5124a616ecf602e68c7d449844/MP4/marktplace-D-World.mp4
 
 
 # Mundo Digital (DWorld)
