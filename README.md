@@ -155,6 +155,8 @@ The project features a Solidity contract that serves as a decentralized marketpl
 
 https://github.com/user-attachments/assets/e3b6e35f-e249-4605-8bdb-35fb93cba123
 
+https://github.com/user-attachments/assets/e7a373a8-6e63-4f09-af9c-765f28a08c20
+
 # Mundo Digital (DWorld)
 
 Presentation with description of the ERC721 and ERC1155 smart contract with its functions for nft marketplace.
