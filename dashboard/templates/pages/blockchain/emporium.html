@@ -49,19 +49,91 @@
 
     <div class="row mt-4">
       <div class="col-lg-8">
-        <div class="card h-100 border-1 bg-transparent position-relative" style="overflow: hidden; border-radius: 15px;">
-            <!-- Cabeçalho do cartão -->           
-    
-            <!-- Corpo do cartão com mapa como plano de fundo -->
-            <div class="card-body p-0 position-relative leaflet">
-                <!-- Mapa usando Mapbox GL JS como plano de fundo -->
-                <div id="mapid" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 1; border-radius: 15px;"></div>
-            </div>
-    
-            <!-- Rodapé do cartão -->            
+        <div class="card h-100 border-1 bg-transparent position-relative" 
+             style="overflow: hidden; border-radius: 15px;">
+      
+          <!-- Bootstrap Carousel iniciando aqui -->
+          <div id="cardCarousel" 
+               class="carousel slide h-100" 
+               data-bs-ride="carousel"
+               style="overflow: hidden; border-radius: 15px;">
+            
+            <!-- Itens do Carousel -->
+            <div class="carousel-inner h-100">
+      
+              <!-- Fase 1: Mapa -->
+              <div class="carousel-item active h-100">
+                <div class="card-body p-0 position-relative leaflet h-100">
+                  <div id="mapid" 
+                       style="
+                         position: absolute;
+                         top: 0; left: 0;
+                         width: 100%; height: 100%;
+                         z-index: 1;
+                         border-radius: 15px;
+                       ">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- Fase 2: Vídeo -->
+              <div class="carousel-item h-100">
+                <div class="card-body p-0 position-relative h-100">
+                  <video 
+                    controls 
+                    autoplay 
+                    muted 
+                    loop
+                    style="
+                      position: absolute;
+                      top: 0; left: 0;
+                      width: 100%; height: 100%;
+                      object-fit: cover;
+                      z-index: 1;
+                      border-radius: 15px;
+                    ">
+                    <source src="{% static 'assets/mp4/AAPOP.mp4' %}" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                  </video>
+                </div>
+              </div>
+      
+              <!-- Fase 3: Fotos -->
+              <div class="carousel-item h-100">
+                <div class="card-body p-0 position-relative d-flex justify-content-center align-items-center h-100">
+                  <!-- Exemplo: galeria simples com ◀ ▶-->
+                  <img src="{% static 'assets/img/Rancho.png' %}" 
+                       alt="Foto 1" 
+                       style="
+                         max-width: 100%; 
+                         max-height: 100%;
+                         border-radius: 15px;
+                       ">
+                </div>
+              </div>
+      
+            </div><!-- /.carousel-inner -->
+      
+            <!-- Controles de Navegação -->
+            <button class="carousel-control-prev" 
+                    type="button" 
+                    data-bs-target="#cardCarousel" 
+                    data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" 
+                    type="button" 
+                    data-bs-target="#cardCarousel" 
+                    data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Próximo</span>
+            </button>
+      
+          </div><!-- /#cardCarousel -->
+      
         </div>
-      </div>
-    
+      </div>    
     
     
       <div class="col-lg-4">
@@ -371,7 +443,8 @@
             </div>            
         </div>
       </div>        
-    </div>  
+    </div>
+      
   </div>
       
 
