@@ -96,21 +96,41 @@ Além dos requisitos listados na seção "Requisitos" deste README, o processo d
 | **Escritura:**                   | Escritura                                               | Documento público que registra a transferência de propriedade do imóvel                     |
 | **Fotos do imóvel:**             | Fotos do imóvel                                         | Fotografias do imóvel para ilustrar e facilitar a sua identificação                         |
 
-## Principais Características
+# PRINCIPAIS CARACTERÍSTICAS
 
-O projeto apresenta um contrato Solidity que serve como um mercado descentralizado para tokens não fungíveis (NFTs), oferecendo uma série de recursos robustos:
+O projeto apresenta um contrato inteligente desenvolvido em linguagem Solidity, estruturado como um **mercado descentralizado para tokens não fungíveis (NFTs)**, voltado à inovação tecnológica e à transformação digital de ativos, com foco especial no setor imobiliário.
 
-1. **Criação Descentralizada de NFTs:**
+> **Nota introdutória:** O presente documento apresenta uma seleção das funcionalidades principais que estarão disponíveis na aplicação, destacando, neste momento, **aquelas diretamente integradas às tecnologias Web3 e Blockchain**. Outras funcionalidades complementares — relacionadas à gestão, interação social e serviços de apoio — serão abordadas oportunamente em materiais específicos.
 
-- Os usuários podem criar facilmente seus próprios NFTs de forma descentralizada, proporcionando autonomia na geração de conteúdo exclusivo.
+Dentre os recursos já integrados ao ambiente Web3, destacam-se:
 
-2. **Compra e venda de NFTs:**
+## 1. Digitalização do Registro Imobiliário em Formato de NFT
 
-- Facilita a negociação peer-to-peer de NFTs, permitindo que os usuários troquem ativos digitais de forma segura e transparente.
+Permite aos usuários a emissão descentralizada de NFTs representativos de bens imóveis, conferindo autenticidade, rastreabilidade e segurança jurídica por meio da escrituração digital baseada em tecnologia blockchain.
 
-3. **Leilões Descentralizados:**
+## 2. Armazenamento Descentralizado de Dados via IPFS
 
-- Oferece a funcionalidade de criar leilões para NFTs, permitindo que os usuários aceitem lances em um ambiente descentralizado e transparente.
+Garante a integridade, permanência e descentralização dos arquivos vinculados aos NFTs por meio da integração com o sistema de armazenamento IPFS (InterPlanetary File System), assegurando a persistência e acessibilidade dos metadados e documentos digitais.
+
+## 3. Compra e Venda de Ativos Digitais
+
+Facilita transações peer-to-peer de NFTs em um ambiente seguro, transparente e auditável, promovendo negociações diretas entre as partes interessadas com garantia contratual automatizada.
+
+## 4. Leilões Descentralizados
+
+Implementa a funcionalidade de leilões públicos de ativos digitais, com lances registrados em tempo real na blockchain, assegurando transparência, equidade e ampla competitividade entre os participantes.
+
+## 5. Financiamento Coletivo (Crowdfunding Imobiliário)
+
+Habilita a captação de recursos por meio de mecanismos de financiamento coletivo, permitindo que múltiplos investidores adquiram cotas representadas por NFTs fracionados, democratizando o acesso a investimentos e impulsionando o desenvolvimento de projetos comunitários e sustentáveis.
+
+## 6. Lojas Virtuais e Perfis Profissionais
+
+Fornece uma infraestrutura para a criação de lojas digitais customizáveis e perfis profissionais verificados, promovendo a visibilidade institucional de agentes e empreendedores, com exibição de portfólios, credenciais e serviços oferecidos no ecossistema descentralizado.
+
+## 7. Incubação e Lançamento de Projetos
+
+Estabelece um ambiente favorável à incubação de iniciativas inovadoras, oferecendo suporte técnico, jurídico e operacional para o desenvolvimento e o lançamento de novos projetos dentro do ecossistema, com acesso a ferramentas de governança, financiamento e exposição mercadológica.
 
 ## Utilização 🛠️
 
