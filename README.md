@@ -2,6 +2,10 @@
 
 ![ASPPIBRA ESCRITURA](https://raw.githubusercontent.com/ASPPIBRA-DAO/Imagens/890ffa9bfb4c79f650c48e627aa2306299c17c4b/Jornal/ASPPIBRA-ESCRITURA.svg)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6R9gf_Y8GgY?si=p9ZmhOgIHQ6haNF2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  
+</iframe>
+
 ## Índice 📑
 
 1. [**Introdução**](#introdução)
