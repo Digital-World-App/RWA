@@ -2,8 +2,6 @@
 
 ![ASPPIBRA ESCRITURA](https://raw.githubusercontent.com/ASPPIBRA-DAO/Imagens/890ffa9bfb4c79f650c48e627aa2306299c17c4b/Jornal/ASPPIBRA-ESCRITURA.svg)
 
-[![Texto alternativo da imagem](http://www.youtube.com/watch?v=6R9gf_Y8GgY&t=1696/maxresdefault.jpg)](https://www.youtube.com/watch?v=46)
-
 ## Índice 📑
 
 1. [**Introdução**](#introdução)
